@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giỏ hàng — Bạc Hải Yến</title>
+<meta name="description" content="Giỏ hàng của bạn tại Bạc Hải Yến.">
+<!-- Giỏ hàng là trang riêng tư của từng khách: không cho máy tìm kiếm đánh chỉ mục -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="cart">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap" style="padding-block:32px 64px">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Giỏ hàng</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-4">
+      <span class="eyebrow">Bước 1 / 2</span>
+      <h1>Giỏ hàng</h1>
+    </header>
+
+    <!-- Nội dung giỏ hàng dựng bằng JS -->
+    <div id="cart-root"></div>
+
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/cart.js"></script>
+
+</body>
+</html>

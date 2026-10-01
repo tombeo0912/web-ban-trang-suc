@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Không tìm thấy trang — Bạc Hải Yến</title>
+<meta name="description" content="Trang bạn tìm không tồn tại.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/favicon-180.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="notfound">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap wrap--mid">
+
+    <!--
+      Trang này hiển thị khi đường dẫn không tồn tại.
+      Nó gợi ý vài lối vào hữu ích, và với một mã hàng trên URL thì thử tìm
+      món tương ứng trước khi báo không tìm thấy.
+    -->
+    <div id="notfound-root" style="padding-block:64px"></div>
+
+    <!-- Gợi ý sản phẩm để khách không bị dừng lại ở ngõ cụt -->
+    <section class="section section--tight" id="notfound-suggest" hidden>
+      <div class="section-head">
+        <h2>Có thể bạn đang tìm</h2>
+      </div>
+      <div class="product-grid" id="notfound-products"></div>
+    </section>
+
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/pages.js"></script>
+<script>
+  /* Nếu đường dẫn chứa một mã hàng hoặc slug quen thuộc, thử tìm món đó.
+     Đây là cách cứu khách khi link cũ đã đổi — tốt hơn là chỉ báo lỗi. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var path = decodeURIComponent(window.location.pathname + window.location.search);
+    var m;
+
+    // Dạng /san-pham/ten-mon hoặc ?slug=ten-mon
+    m = path.match(/[?&]slug=([^&]+)/) || path.match(/\/([a-z0-9-]{4,})\/?$/);
+    if (!m) return;
+
+    var key = m[1];
+
+    window.BHY.loadCatalog().then(function (cat) {
+      var p = window.BHY.findProduct(cat, key);
+      if (!p) return;
+
+      // Tìm thấy: chuyển hẳn sang trang chi tiết sản phẩm.
+      window.location.replace('product.html?slug=' + encodeURIComponent(p.slug || p.id));
+    });
+  });
+</script>
+
+</body>
+</html>

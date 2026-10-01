@@ -1,0 +1,154 @@
+/* ============================================================================
+   Bạc Hải Yến — Token thiết kế
+   ----------------------------------------------------------------------------
+   Toàn bộ biến màu, khoảng cách, kiểu chữ, bo góc và chuyển động nằm ở đây.
+   Đổi giá trị trong file này là đổi được cả website.
+   Bảng màu lấy từ chính bộ nhận diện của logo: trắng — đen — ánh bạc.
+   ========================================================================== */
+
+:root {
+
+  /* ---------------------------------------------------------------- MÀU NỀN */
+  --c-paper:      #FAF9F7;   /* nền chính: trắng ngà ấm, đỡ chói hơn trắng tuyệt đối */
+  --c-surface:    #FFFFFF;   /* nền thẻ, khối nội dung */
+  --c-muted:      #F0EFEC;   /* nền phụ, vùng phân tách nhẹ */
+  --c-muted-deep: #E6E4E0;   /* nền phụ đậm hơn, dùng cho placeholder ảnh */
+  --c-ink:        #1A1A1A;   /* chữ chính, gần đen cho hợp logo */
+  --c-ink-soft:   #6A6A6A;   /* chữ phụ: ghi chú, mô tả ngắn */
+  --c-ink-faint:  #9A9A9A;   /* chữ mờ nhất: nhãn, meta — chỉ dùng cho chữ đủ lớn */
+  --c-line:       #DEDAD4;   /* đường viền, kẻ phân cách */
+  --c-line-soft:  #EBE8E4;   /* viền rất nhạt */
+
+  /* --------------------------------------------------------------- MÀU NHẤN */
+  /* Duy nhất một màu nhấn, dùng tiết chế: nút chính, liên kết, trạng thái chọn.
+     Tông vàng đồng ấm, đủ trầm để không phá vỡ phong cách trắng đen. */
+  --c-accent:       #9A7B4F;
+  --c-accent-dark:  #7D6340;   /* trạng thái hover */
+  --c-accent-deep:  #5F4B30;   /* trạng thái nhấn mạnh, dùng cho chữ trên nền nhạt */
+  --c-accent-wash:  #F5F0E8;   /* nền rất nhạt của màu nhấn */
+
+  /* -------------------------------------------------------------- MÀU BẠC */
+  /* Ánh bạc là màu của sản phẩm và chi tiết trang trí.
+     Không dùng bạc nhạt làm màu chữ nhỏ hay nút hành động vì không đủ tương phản. */
+  --c-silver:       #C9C9CC;
+  --c-silver-soft:  #E4E4E6;
+  --c-silver-deep:  #8E8E93;
+
+  /* ------------------------------------------------------- MÀU TRẠNG THÁI */
+  --c-success:      #2F6B4F;
+  --c-success-bg:   #EAF3EE;
+  --c-warning:      #8A5A12;
+  --c-warning-bg:   #FBF1E0;
+  --c-danger:       #A63A2E;
+  --c-danger-bg:    #FBEDEB;
+  --c-focus:        #2C6BA8;   /* viền tiêu điểm bàn phím — màu riêng để luôn nhìn rõ */
+
+  /* ------------------------------------------------------------ KHOẢNG CÁCH */
+  /* Thang 8px. Chỉ dùng các giá trị trong thang này để nhịp điệu nhất quán. */
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  16px;
+  --sp-4:  24px;
+  --sp-5:  32px;
+  --sp-6:  48px;
+  --sp-7:  64px;
+  --sp-8:  96px;
+  --sp-9:  128px;
+
+  /* ------------------------------------------------------------- KIỂU CHỮ */
+  /* Font hệ thống hỗ trợ tiếng Việt đầy đủ và không cần tải từ mạng,
+     nên trang không bị nhảy chữ khi mạng chậm. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-serif: Georgia, "Times New Roman", "Noto Serif", serif;
+
+  /* Cỡ chữ — dùng clamp() để tự co giãn giữa mobile và desktop */
+  --fs-display: clamp(2.25rem, 5.5vw, 4rem);      /* tiêu đề hero */
+  --fs-h1:      clamp(1.875rem, 4vw, 2.75rem);
+  --fs-h2:      clamp(1.5rem, 3vw, 2.125rem);
+  --fs-h3:      clamp(1.25rem, 2vw, 1.5rem);
+  --fs-h4:      1.125rem;
+  --fs-body:    1rem;        /* 16px — không nhỏ hơn trên mobile */
+  --fs-sm:      0.9375rem;   /* 15px */
+  --fs-xs:      0.8125rem;   /* 13px — chỉ cho nhãn và meta ngắn */
+  --fs-price:   clamp(1.25rem, 2vw, 1.5rem);
+
+  --lh-tight:   1.15;
+  --lh-snug:    1.35;
+  --lh-body:    1.65;
+
+  --ls-tight:   -0.02em;     /* tiêu đề lớn cần siết nhẹ cho gọn */
+  --ls-wide:    0.08em;      /* nhãn nhỏ viết hoa cần mở rộng */
+  --ls-wider:   0.16em;      /* nhãn phụ, kiểu chữ trang sức */
+
+  /* -------------------------------------------------------------- BO GÓC */
+  --r-sm:  6px;
+  --r-md:  8px;
+  --r-lg:  10px;
+  --r-pill: 999px;
+
+  /* ----------------------------------------------------------- ĐỔ BÓNG */
+  /* Đổ bóng rất nhẹ. Trang sức cần nền sạch, bóng đậm sẽ làm rối mắt. */
+  --sh-xs: 0 1px 2px rgba(26, 26, 26, 0.04);
+  --sh-sm: 0 2px 8px rgba(26, 26, 26, 0.06);
+  --sh-md: 0 6px 20px rgba(26, 26, 26, 0.08);
+  --sh-lg: 0 16px 44px rgba(26, 26, 26, 0.12);
+
+  /* ------------------------------------------------------------- CHUYỂN ĐỘNG */
+  /* Giá trị cụ thể do config.motion điều khiển qua JS;
+     các biến dưới đây là mặc định an toàn. */
+  --t-fast:   160ms;
+  --t-base:   220ms;
+  --t-slow:   320ms;
+  --ease:     cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ------------------------------------------------------------- BỐ CỤC */
+  --wrap:        1360px;   /* bề rộng tối đa vùng nội dung */
+  --wrap-narrow: 760px;    /* cột chữ dài, dễ đọc */
+  --wrap-mid:    1040px;
+  --gutter:      clamp(16px, 4vw, 40px);
+
+  --header-h:    68px;
+  --header-h-lg: 76px;
+
+  /* --------------------------------------------------------- LỚP XẾP CHỒNG */
+  --z-base:    1;
+  --z-sticky:  100;
+  --z-header:  200;
+  --z-drawer:  300;
+  --z-modal:   400;
+  --z-toast:   500;
+}
+
+/* ============================================================================
+   CHẾ ĐỘ TƯƠNG PHẢN CAO — theo dõi cài đặt hệ điều hành của người dùng
+   ========================================================================== */
+@media (prefers-contrast: more) {
+  :root {
+    --c-ink-soft: #4A4A4A;
+    --c-ink-faint: #6A6A6A;
+    --c-line: #B8B4AE;
+  }
+}
+
+/* ============================================================================
+   GIẢM CHUYỂN ĐỘNG — tôn trọng lựa chọn của người dùng
+   Đặt về gần như tức thời thay vì tắt hẳn, để trạng thái vẫn được thông báo.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 1ms;
+    --t-base: 1ms;
+    --t-slow: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

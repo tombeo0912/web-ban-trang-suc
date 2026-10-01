@@ -1,0 +1,278 @@
+MASTER PROMPT — WEBSITE BÁN BẠC TRANG SỨC CÓ THỂ VẬN HÀNH CÔNG KHAI
+Phiên bản 1.0 | Ngày soạn: 01/10/2026 | Phong cách: thanh lịch, gần gũi
+
+HƯỚNG DẪN DÙNG
+Điền các trường trong phần A bằng dữ liệu thật nếu đã có, rồi gửi toàn bộ prompt này cho AI lập trình có quyền làm việc trên dự án. Nếu chưa có thông tin, giữ nguyên trường trống; AI phải tiếp tục làm phần độc lập và quản lý những điểm còn thiếu. Prompt này yêu cầu xây dựng sản phẩm hoàn chỉnh theo từng giai đoạn, không hứa rằng một lần sinh mã sẽ tự tạo ra cửa hàng đã sẵn sàng nhận tiền.
+
+VAI TRÒ VÀ MỤC TIÊU
+Bạn là người thiết kế sản phẩm thương mại điện tử và kỹ sư full-stack phụ trách xây dựng website bán bạc trang sức cho một cửa hàng gia đình ở Việt Nam. Hãy thực hiện công việc trong dự án, không chỉ đưa kế hoạch hoặc những đoạn mã rời rạc. Sản phẩm phải đẹp, dễ mua trên điện thoại, dễ quản trị và có đường triển khai thực tế.
+
+Ưu tiên theo thứ tự: dữ liệu và giao dịch chính xác; khách hàng mua hàng thuận tiện; hình ảnh và trải nghiệm thương hiệu; tốc độ; khả năng vận hành với ít nhân sự. Các hiệu ứng phải giúp khách xem sản phẩm và hiểu thao tác. Không dùng hiệu ứng để che sự thiếu hụt chức năng.
+
+A. BỐI CẢNH VÀ DỮ LIỆU THƯƠNG HIỆU
+Thông tin đã biết:
+- Doanh nghiệp có ba cửa hàng ở Thái Bình, Hà Nội và Hải Phòng. Đây là tên khu vực theo thông tin chủ cửa hàng cung cấp; địa chỉ hành chính hiện hành cần xác nhận khi nhập dữ liệu thật.
+- Đã có tên thương hiệu, logo và trang Facebook; chưa cung cấp chúng trong prompt này.
+- Đang ưu tiên Shopee. Không mặc định đã có quyền tích hợp API Shopee hoặc đã mở shop.
+- Nguồn lực nội dung hạn chế, hiện có một nhân sự media. Không thiết kế cách vận hành đòi hỏi mỗi ngày nhiều video/bộ ảnh mới.
+- Chủ cửa hàng đã chọn phong cách thanh lịch, gần gũi.
+
+Dữ liệu cần điền:
+BRAND_NAME = Bạc Hải Yến
+LOGO_ASSETS = Đã nhận 01 file logo gốc 959×959 px, nền đen, gồm mark chữ Y ánh bạc
+  và wordmark "BACHAIYEN.VN". File gốc: assets/logo/logo-primary-black.png.
+  Đã tách thành 07 tệp dùng cho từng ngữ cảnh, xem bảng trong PROJECT_STATUS.md:
+    logo-lockup-on-light.png   header, nền sáng, màu #1A1A1A
+    logo-lockup-on-dark.png    footer, nền tối, màu trắng
+    logo-mark-on-light.png     chỉ mark, nền sáng (338 × 415)
+    logo-mark-on-dark.png      chỉ mark, nền tối (338 × 415)
+    favicon-32.png, favicon-48.png, favicon-180.png
+  Còn thiếu: favicon.ico đa kích thước (đang dùng PNG, trình duyệt hiện đại chấp nhận).
+BRAND_COLORS = Trắng — đen — ánh bạc. Lấy trực tiếp từ logo:
+    nền chính #FAF9F7 (trắng ngà ấm) | nền thẻ #FFFFFF | nền phụ #F0EFEC
+    chữ chính #1A1A1A | chữ phụ #6A6A6A | đường viền #DEDAD4
+    màu nhấn #9A7B4F (vàng đồng ấm, dùng tiết chế cho nút chính và liên kết)
+  Không dùng bạc nhạt làm màu chữ nhỏ hay nút hành động vì không đủ tương ứng
+  tương phản. Ánh bạc chỉ là màu của sản phẩm và chi tiết trang trí.
+DOMAIN = bachaiyen.vn  (suy ra từ wordmark in trong logo — CẦN CHỦ CỬA HÀNG XÁC NHẬN)
+BUSINESS_IDENTITY = Bạc Hải Yến
+  Chưa có: mã số thuế, địa chỉ đăng ký kinh doanh, người đại diện pháp luật.
+  Không tự đặt các thông tin này. Website đang ẩn mục tương ứng.
+CONTACTS = Hotline: 0982338388, 0904868881
+  Email: bachaiyenhn@gmail.com
+  Zalo: chưa có — mục này tự ẩn trên toàn website
+  Facebook: chưa có — mục này tự ẩn trên toàn website
+  (Đã ghi nhận thông tin chủ cửa hàng cho biết có trang Facebook, nhưng chưa
+   cung cấp đường dẫn nên chưa thể hiển thị.)
+SHOPEE_URL = Chưa có. Mục này tự ẩn. Trang chi tiết sản phẩm có sẵn chỗ hiện nút
+  "Xem trên Shopee" cho từng SKU khi có link thật.
+BRANCHES = Ba khu vực đã xác nhận: Thái Bình, Hà Nội, Hải Phòng.
+  CHƯA CÓ địa chỉ cụ thể, giờ mở cửa, số liên hệ riêng và link bản đồ của từng nơi.
+  Website hiển thị trạng thái "Đang cập nhật địa chỉ" thay vì địa chỉ giả.
+  Khi điền, dùng đơn vị hành chính đang áp dụng tại thời điểm nhập.
+CATALOG = 03 sản phẩm ban đầu, đã nhập vào data/catalog.json:
+    BHY-N001  Nhẫn bạc 925 nữ đá xanh              — CHƯA CÓ GIÁ
+    BHY-K002  Khuyên nụ bạc 925 xi vàng trắng      — CHƯA CÓ GIÁ
+    BHY-K003  Khuyên tai bạc 925 kết hợp ngọc trai — 680.000 VNĐ
+  Chưa có: ảnh thật, danh sách size nhẫn, số lượng tồn kho.
+  Hai sản phẩm chưa có giá hiển thị "Liên hệ cửa hàng để biết giá", nút thêm vào
+  giỏ tự chuyển sang hướng dẫn gọi điện, và không được tính vào các khoảng giá ở
+  trang chủ và trang quà tặng. Không tự đặt giá thay chủ cửa hàng.
+POLICIES = Chưa có nội dung nào. Tất cả đang để trống có chủ ý, mục tương ứng tự
+  ẩn trên footer. Cần chủ cửa hàng xác nhận: giao hàng, đổi trả, bảo hành, làm
+  sáng bạc, gói quà, khắc tên, bảo mật, điều khoản sử dụng.
+PAYMENT_METHODS = Chưa chọn. Cả COD, chuyển khoản và cổng thanh toán đang tắt,
+  nên website chưa nhận đơn trực tuyến và nói rõ điều đó với khách.
+  Nếu chọn chuyển khoản, cần: tên ngân hàng, số tài khoản, chủ tài khoản, chi nhánh.
+SHIPPING_SETUP = Chưa có. Chưa chọn vùng giao, biểu phí hay đơn vị vận chuyển.
+  Website đang ghi "Phí giao hàng sẽ được cửa hàng xác nhận khi liên hệ."
+HOSTING_AND_BUDGET = Chưa có. Chưa chọn hạ tầng, chưa có ngân sách duy trì.
+  Bản hiện tại là HTML/CSS/JS thuần, chạy không cần bước build và không tốn phí
+  hạ tầng. Xem mục "Quyết định kỹ thuật đã chọn" trong PROJECT_STATUS.md.
+
+Không tự tạo tên thương hiệu cuối cùng, số điện thoại, địa chỉ, tài khoản ngân hàng, chứng nhận, số năm kinh nghiệm, cam kết bạc S925/S999 cho toàn bộ cửa hàng, đánh giá hay chính sách. Khi thiếu dữ liệu, dùng cấu hình nháp ở môi trường xem trước. Sản phẩm mẫu và ảnh minh họa phải được gắn dấu trong dữ liệu; không cho phép đặt mua chúng trong môi trường bán thật. Giao diện công khai cần ẩn mục chưa có dữ liệu thay vì hiện placeholder.
+
+B. NGUỒN CẢM HỨNG VÀ NGUYÊN TẮC THIẾT KẾ
+Tham khảo nguyên lý trải nghiệm từ các địa chỉ sau, kiểm tra lại nếu có công cụ duyệt web:
+1. https://mejuri.com/ — bộ sưu tập, shop the look, liên kết trải nghiệm cửa hàng.
+2. https://mejuri.com/sg/en/collections/shop-all — danh mục, chất liệu và đá được trình bày rõ.
+3. https://www.monicavinader.com/ — chọn quà theo người nhận/ngân sách; chất liệu; dịch vụ cửa hàng.
+4. https://www.missoma.com/ — nhóm sản phẩm theo loại, hướng dẫn chiều dài/size, gợi ý phụ kiện trong giỏ.
+5. https://www.tiffany.com/jewelry/sterling-silver/ — bộ sưu tập bạc và cách kể câu chuyện thiết kế/chế tác.
+6. https://pandora.norbreeze.vn/ — khám phá theo ngân sách, dịp tặng quà, chất liệu; sản phẩm đã xem.
+7. https://lili.vn/ — danh mục bạc tại Việt Nam, tên sản phẩm có chất liệu, biến thể và giá VND, cẩm nang chăm sóc.
+8. https://www.pnj.com.vn/ — tham khảo hỗ trợ đo size, thông tin sản phẩm và hệ thống cửa hàng khi truy cập được.
+
+Các nguồn dùng để học cách tổ chức nội dung và mua hàng. Không sao chép logo, ảnh, văn bản, tên bộ sưu tập hay bố cục nguyên mẫu. Không dùng màu nhận diện độc quyền của thương hiệu khác làm đặc trưng của cửa hàng. Không khẳng định đã kiểm tra một hiệu ứng trên website tham khảo nếu chưa thực sự tương tác.
+
+Hướng hình ảnh: một cửa hàng bạc có gu, đáng tin và dễ tiếp cận. Nền sáng, ánh bạc rõ, có chút ấm từ giấy/hộp quà; ảnh sản phẩm là trung tâm. Không biến website thành một bảng giảm giá hoặc một trang quảng cáo công nghệ.
+
+Hệ thống thiết kế đề xuất, điều chỉnh theo logo thật:
+- Nền chính #FAF8F5; nền trắng #FFFFFF; nền phụ #F0EFEC.
+- Chữ chính #242424; chữ phụ #626262; đường viền #DEDAD4.
+- Màu nhấn #4B6358 cho nút chính, giữ tỷ lệ vừa phải. Kiểm tra tương phản của từng tổ hợp thực tế.
+- Bạc là màu của sản phẩm và chi tiết trang trí; tránh dùng bạc nhạt cho chữ nhỏ/nút hành động.
+- Một font sans-serif hỗ trợ tiếng Việt tốt cho nội dung và giao dịch; có thể dùng một serif hỗ trợ tiếng Việt cho tiêu đề biên tập. Tự lưu font có giấy phép phù hợp, kiểm tra dấu tiếng Việt.
+- Nội dung trong khung tối đa khoảng 1280–1440px; dùng khoảng trắng hợp lý, khoảng cách 8/16/24/32/48/64px; cạnh nút và thẻ bo nhẹ 6–10px.
+- Ảnh sản phẩm tỷ lệ 1:1 hoặc 4:5 nhất quán theo vùng; ảnh chiến dịch có bản riêng cho mobile để không cắt mất trang sức.
+- Header gọn, biểu tượng nhất quán, tránh quá nhiều badge. Không tự tạo logo bằng font thay cho logo thật ở bản công khai.
+
+C. NHỮNG TRANG PHẢI XÂY DỰNG
+1. Trang chủ.
+2. Danh mục và bộ sưu tập: nhẫn, bông tai, dây chuyền/mặt dây, vòng/lắc tay; danh mục khác chỉ hiện nếu có hàng thật.
+3. Trang chi tiết sản phẩm.
+4. Tìm kiếm.
+5. Quà tặng và kết quả gợi ý quà.
+6. Bộ phối/shop the look.
+7. Yêu thích và sản phẩm đã xem.
+8. Giỏ hàng, thanh toán, kết quả đặt hàng.
+9. Tra cứu đơn được bảo vệ; tài khoản khách có thể triển khai sau nếu khách vẫn mua không cần tài khoản.
+10. Hệ thống cửa hàng và trang riêng từng cửa hàng.
+11. Giới thiệu, liên hệ, hướng dẫn đo size, chăm sóc bạc, FAQ.
+12. Giao hàng, thanh toán, đổi trả, bảo hành, bảo mật, điều khoản, nội dung pháp lý cần thiết đã được xác nhận.
+13. Khu quản trị riêng có đăng nhập và phân quyền.
+14. Trang 404, lỗi hệ thống, trạng thái bảo trì phù hợp.
+
+D. TRANG CHỦ — BỐ CỤC CỤ THỂ
+Theo thứ tự:
+1. Thanh thông báo mỏng: một thông điệp thật từ cấu hình, không chạy chữ liên tục; nếu chưa có ưu đãi/chính sách được duyệt thì ẩn.
+2. Header: logo; Trang sức; Bộ sưu tập; Quà tặng; Cửa hàng; Cẩm nang; tìm kiếm; yêu thích; giỏ. Mobile có menu, logo và giỏ/tìm kiếm trong khoảng nhìn dễ chạm.
+3. Hero một ảnh chủ đạo, không dùng carousel tự xoay. Desktop có ảnh lifestyle đeo bạc và phần chữ thoáng; mobile dùng crop đã duyệt. Ví dụ tiêu đề sáng tạo riêng: “Một chút bạc, một nét riêng.” Phụ đề: “Chọn món trang sức đồng hành cùng những khoảnh khắc của bạn.” CTA “Khám phá trang sức”; CTA phụ “Chọn quà tặng”. Không gắn nội dung này với cam kết chất lượng chưa xác nhận.
+4. Khám phá theo loại: 4–6 danh mục có ảnh thật, tên ngắn, liên kết trực tiếp.
+5. Sản phẩm nổi bật: 4–8 sản phẩm trên desktop, hai cột trên mobile. Chỉ ghi “Bán chạy” khi có dữ liệu bán hàng hoặc tiêu chí được chủ cửa hàng xác nhận; nếu chưa có, ghi “Gợi ý từ cửa hàng”.
+6. Bộ sưu tập biên tập: ảnh lớn, vài dòng ngắn về phong cách; nếu chưa có bộ sưu tập thật, dùng nhóm sản phẩm do quản trị tạo, không bịa câu chuyện chế tác.
+7. Phối cùng: một ảnh thật có các món trang sức, kèm danh sách chọn từng món; hotspot là tùy chọn và phải có danh sách tương đương dễ dùng trên mobile.
+8. Chọn quà theo ngân sách: các khoảng giá cấu hình dựa trên catalog thật, không mặc định mức giá của Pandora phù hợp cửa hàng.
+9. Thương hiệu và cửa hàng: câu chuyện được cung cấp; ba cửa hàng và CTA “Tìm cửa hàng”.
+10. Nội dung hữu ích: tối đa ba bài về chọn size, chăm sóc, chọn quà. Nội dung thường dùng lâu dài để một nhân sự media quản lý được.
+11. Ảnh/đánh giá khách hàng chỉ khi có dữ liệu thật và quyền sử dụng. Không có thì bỏ khối này.
+12. Footer: liên hệ thật, cửa hàng, chính sách, mạng xã hội, thông tin đơn vị kinh doanh. Logo/chứng nhận chỉ hiện khi có căn cứ và liên kết xác thực phù hợp.
+
+E. DANH MỤC, TÌM KIẾM VÀ THẺ SẢN PHẨM
+- Tìm theo tên, mã SKU, loại; hỗ trợ có dấu/không dấu với kết quả nhất quán. Không dùng bộ tìm kiếm riêng tốn kém nếu catalog nhỏ và tìm kiếm trong cơ sở dữ liệu đã đáp ứng.
+- Lọc theo khoảng giá, loại, chất liệu đúng dữ liệu, màu/lớp mạ, loại đá, size, còn hàng; thêm mục theo phong cách/dịp nếu đã gắn tag thật.
+- Bộ lọc desktop bên cạnh hoặc thanh ngang gọn; mobile là drawer có số kết quả, nút áp dụng và xóa lọc. Lọc/sắp xếp/phân trang được giữ trong URL để chia sẻ và quay lại.
+- Sắp xếp theo mới nhất, giá tăng/giảm; chỉ có sắp xếp bán chạy khi có dữ liệu.
+- Card gồm ảnh, tên, giá biến thể hoặc “Từ …”, chất liệu ngắn khi đã biết, chọn yêu thích. Giá sale chỉ xuất hiện khi có giá gốc và quy tắc khuyến mại thật.
+- Desktop hover đổi từ ảnh sản phẩm sang ảnh đeo thật trong 180–250ms nếu có ảnh tương ứng; ảnh không zoom quá 1.03. Mobile không phụ thuộc hover, có nút/thumbnail khi cần.
+- Quick view mở thông tin và lựa chọn bắt buộc. Không thêm nhẫn vào giỏ bằng một click nếu chưa chọn size. Sản phẩm một biến thể có thể thêm nhanh.
+- Wishlist và lịch sử xem có thể lưu cục bộ như tiện ích, không chứa thông tin giao dịch/PII. Người dùng có thể xóa chúng.
+- Có pagination hoặc “Xem thêm” hoạt động với URL và Back; không dùng infinite scroll khiến khách mất vị trí.
+- Kết quả rỗng có hướng dẫn bỏ bộ lọc; lỗi tải có nút thử lại; ảnh lỗi có khung thay thế tử tế.
+
+F. TRANG CHI TIẾT SẢN PHẨM
+Desktop: gallery bên trái, thông tin mua bên phải; mobile: gallery, tên/giá, lựa chọn, CTA trước phần mô tả dài.
+
+Gallery cần ảnh cận sản phẩm, mặt sau/khóa nếu có, ảnh đeo thật có tỷ lệ dễ hiểu, ảnh hộp quà nếu đúng gói bán. Có thumbnail, phóng to/lightbox, swipe trên mobile. Không tạo ảnh AI rồi trình bày như ảnh chụp chính xác của SKU. Khi chỉ có một ảnh, trình bày tốt một ảnh; không nhân bản ảnh giả làm gallery.
+
+Thông tin mua: tên; SKU; giá VND; chất liệu; lớp mạ; đá; size và kích thước; trọng lượng nếu có đo thực tế; chọn biến thể; số lượng; tình trạng hàng. Phân biệt mặt dây bán riêng với dây chuyền hoàn chỉnh, bông tai một chiếc với một đôi, nhẫn cặp với nhẫn đơn.
+
+Có hướng dẫn size ngay cạnh lựa chọn. Bảng size phải dựa trên dữ liệu/thang size của cửa hàng; không suy ra quy đổi universal. Dùng hình đo theo mm, giải thích đo và CTA liên hệ nếu chưa chắc. Không hứa size phù hợp tuyệt đối chỉ từ công cụ tính.
+
+CTA chính “Thêm vào giỏ”, CTA mua ngay chỉ khi cấu hình thanh toán đã sẵn sàng. Mobile có thanh mua cố định khi CTA gốc ra khỏi màn hình, tôn trọng safe-area và không che modal/footer. Thông báo rõ nếu còn thiếu size hoặc hết hàng.
+
+Chi nhánh: chọn nhận tại cửa hàng khi đã bật; hiển thị khả dụng của SKU/size đúng dữ liệu. Nếu tồn kho vật lý chưa đồng bộ, chỉ hiển thị “Liên hệ xác nhận tại cửa hàng” và không cho xác nhận lấy ngay.
+
+Các khối mở rộng: mô tả; chất liệu/chăm sóc; giao hàng; đổi trả/bảo hành; câu hỏi; phối cùng. Nêu đúng sự khác nhau giữa bạc, lớp mạ và đá; không cam kết bạc không bao giờ xỉn màu hoặc an toàn tuyệt đối cho mọi người. Không tự viết tác dụng chữa bệnh.
+
+Nếu có link Shopee thật của SKU, hiện CTA phụ “Xem trên Shopee”; không lấn át CTA website. Không hứa cùng giá/tồn kho trên hai kênh nếu chưa đồng bộ. Có thể đo lượt click ra Shopee nhưng không coi chúng là đơn đã bán.
+
+G. QUÀ TẶNG VÀ BỘ PHỐI
+Chọn quà trong ba bước: người nhận → ngân sách → phong cách/dịp. Cho bỏ qua câu không biết. Kết quả dùng quy tắc và tag sản phẩm có thật, lọc còn hàng, cho điều chỉnh. Không cần chatbot/AI bên ngoài để hoàn thành bản đầu.
+
+Gói quà, thiệp, khắc tên chỉ có nếu cửa hàng xác nhận. Khi có phí hoặc ảnh hưởng thời gian giao/đổi trả, hiển thị trước thanh toán. Nội dung thiệp giới hạn độ dài và được xử lý an toàn. Khắc tên có giới hạn ký tự, preview đánh dấu minh họa, dữ liệu đi vào dòng đơn hàng.
+
+Bộ phối do quản trị chọn thủ công, không cần thuật toán phức tạp. Khách chọn từng món và biến thể; tổng giá tính lại từ server. Nút mua bộ không tự thêm biến thể thiếu size. Sản phẩm hết hàng được báo riêng; chỉ áp dụng giảm giá bộ nếu có quy tắc thực tế.
+
+H. HIỆU ỨNG VÀ TRỢ NĂNG
+Đây là hiệu ứng thiết kế đề xuất cho dự án, không phải kết luận đã kiểm thử trên tất cả website nguồn:
+- Hover đổi ảnh 180–250ms; focus bàn phím hiển thị hành động tương đương.
+- Drawer giỏ/bộ lọc 220–300ms; hỗ trợ Escape, focus trap, khóa cuộn và trả focus khi đóng.
+- Section biên tập có fade nhẹ + translateY tối đa 12px, 250–400ms, một lần. Nội dung vẫn hiển thị nếu JS/animation không chạy.
+- Nút có feedback nhỏ, trạng thái đang xử lý và thành công rõ ràng; toast dễ đọc, có vùng aria-live.
+- Sticky header gọn, không dịch chuyển bố cục; zoom ảnh/lightbox là tương tác cốt lõi.
+- Không dùng con trỏ tùy chỉnh, scroll hijacking, lấp lánh hạt liên tục, parallax mạnh, nhạc, video nặng tự phát hoặc popup nhận ưu đãi ngay khi vừa vào.
+- Tôn trọng prefers-reduced-motion; không autoplay media. Tất cả chức năng hoạt động bằng bàn phím.
+- Text thường tối thiểu 16px trên mobile; vùng chạm mục tiêu khoảng 44px; nhãn input rõ; lỗi form không chỉ dùng màu; kiểm tra tương phản theo WCAG 2.2 AA.
+- Tối ưu tại chiều rộng 360, 390, 768, 1024, 1440px; kiểm tra không tràn ngang, dấu tiếng Việt không cắt, popup/nút mua không che nhau.
+
+I. GIỎ HÀNG VÀ THANH TOÁN THẬT
+Khách mua không bắt buộc tạo tài khoản. Giỏ giữ đúng SKU/biến thể/size, số lượng, phụ phí quà, phí giao và giảm giá. Lưu giỏ cục bộ được phép nhưng server luôn kiểm tra lại giá và tồn kho trước đặt hàng.
+
+Biểu mẫu nhận hàng: tên, số điện thoại, địa chỉ phù hợp hệ thống hành chính đang dùng, email tùy chọn nếu không cần cho phương thức xác thực. Không hardcode địa giới cũ; danh sách địa chỉ cần nguồn và ngày cập nhật. Có lựa chọn nhận cửa hàng khi sẵn sàng. Hiển thị đầy đủ tổng tiền trước khi xác nhận.
+
+Ưu tiên bản đầu COD và/hoặc chuyển khoản nếu chủ cửa hàng chọn và cung cấp dữ liệu; đơn và dòng đơn phải lưu vào cơ sở dữ liệu bền vững. Chuyển khoản tạo trạng thái chờ đối soát. Không đánh dấu đã thanh toán vì khách bấm “Tôi đã chuyển”, upload ảnh hoặc quét QR. Nhân viên có quyền xác nhận sau đối soát, có nhật ký.
+
+Nếu dùng cổng thanh toán: dùng SDK/API chính thức được xác minh tại thời điểm triển khai; bí mật ở server; kiểm tra chữ ký callback/webhook, amount, currency, order ID; xử lý sự kiện trùng/lệch thứ tự an toàn; xác nhận từ server của provider. Không tin redirect trình duyệt. Không tự thu/lưu số thẻ.
+
+Tạo đơn có idempotency key để click hai lần hoặc retry mạng không tạo hai đơn. Giá, phí, coupon và quyền sử dụng đều kiểm tra ở server. Tiền VND lưu số nguyên, có quy tắc làm tròn rõ.
+
+Giữ chỗ tồn kho theo giao dịch cơ sở dữ liệu, chống hai khách mua cùng món cuối. Có thời hạn giữ chỗ cho chờ thanh toán và job thu hồi; chính sách COD/chuyển khoản cấu hình rõ. Thanh toán đến muộn khi giữ chỗ đã hết phải chuyển đối soát, không tự bán vượt tồn. Hủy đơn giải phóng chỗ đúng một lần. Trả hàng nhập tồn chỉ sau kiểm nhận.
+
+Đơn có ảnh chụp dữ liệu tại thời điểm mua: tên, biến thể, giá, phụ phí và địa chỉ; sửa catalog sau này không thay đổi lịch sử đơn. Tách trạng thái đơn, thanh toán, giao hàng. Không đánh dấu thanh toán COD lúc vừa đặt.
+
+Trang thành công chỉ hiện sau khi server đã lưu đơn, có mã và bước tiếp theo đúng phương thức. Lỗi mạng không xóa giỏ trước khi biết đơn đã lưu. Nếu mất email/thông báo, đơn vẫn tồn tại; có retry thông báo và quản trị xem được.
+
+Tra cứu đơn khách dùng liên kết token khó đoán hoặc OTP/xác thực phù hợp; không cho tìm dữ liệu riêng chỉ bằng số điện thoại hay mã đơn tuần tự. Có giới hạn thử, hết hạn token, che PII cần thiết. Nếu chưa có provider OTP, chọn phương án token an toàn hoặc hỗ trợ qua hotline, không giả lập OTP ở production.
+
+J. BA CHI NHÁNH VÀ QUẢN TRỊ
+Một catalog chung; tồn theo chi nhánh và SKU/biến thể. Tồn có sổ biến động nhập/xuất/giữ chỗ/điều chỉnh; không sửa con số tùy ý thiếu lịch sử. Bản đầu ưu tiên giao mỗi đơn từ một chi nhánh đủ hàng, chưa làm tách đơn nhiều kho. Nếu không có chi nhánh đủ hàng, thông báo/đề nghị điều chỉnh giỏ; không âm thầm cộng tồn ba nơi rồi hứa giao ngay.
+
+Nếu cửa hàng vật lý chưa kết nối hệ thống: chọn kho tồn dành riêng cho online hoặc quy trình cập nhật thủ công có đối soát. Nêu rõ giới hạn; không khẳng định hệ thống đã đồng bộ POS. Có thể ghi đơn Shopee thủ công/nhập file và phân loại kênh để đối soát.
+
+Vai trò:
+- Chủ/quản trị tổng: toàn hệ thống, người dùng, phân quyền, catalog, chính sách, báo cáo.
+- Quản lý chi nhánh: tồn/đơn được phân cho chi nhánh mình, thông tin vận hành của chi nhánh theo quyền.
+- Nhân viên đơn hàng: thao tác được cấp, không đổi giá/phân quyền tùy ý.
+- Nhân sự nội dung: sản phẩm/bài viết/banner nháp và ảnh theo quyền, không truy cập dữ liệu khách hoặc thanh toán khi không cần.
+
+Kiểm tra quyền trên server cho mọi thao tác. Quản lý Hà Nội không xem/sửa đơn Hải Phòng bằng đổi ID trong URL. Không dựa vào việc ẩn nút. Nhật ký cho thay đổi giá/tồn, xác nhận thanh toán, hủy/hoàn và cấp quyền.
+
+Trang quản trị ưu tiên dễ dùng cho một nhân sự media: thêm/sửa SKU/biến thể, upload ảnh kéo thả và sắp xếp, draft/preview/publish, chỉnh hero, bộ phối, bộ sưu tập, FAQ, chính sách, địa chỉ và liên hệ. Có nhập CSV mẫu, preview kiểm tra trước nhập, báo dòng lỗi rõ. Upload có giới hạn loại/kích thước và quyền; nội dung rich text được làm sạch.
+
+Quản lý đơn có tìm kiếm/lọc, chi tiết dòng hàng, ghi chú nội bộ, trạng thái hợp lệ, xuất file theo quyền. Vận chuyển bản đầu có thể nhập hãng/mã vận đơn thủ công. Ước tính phí giao dựa trên biểu phí cấu hình đã xác nhận; không giả số phí hay giả tracking realtime.
+
+Báo cáo đơn mới, doanh thu theo định nghĩa rõ, hàng sắp hết và sản phẩm bán; không cộng đơn hủy/chưa thanh toán vào tiền đã thu. Phân biệt đặt hàng, đã thanh toán, COD đã thu, hoàn tiền. Không tự gọi hệ thống này là phần mềm kế toán hoàn chỉnh.
+
+K. KIẾN TRÚC, AN TOÀN VÀ VẬN HÀNH
+Trước khi chọn stack, đọc repo và hướng dẫn hiện có; giữ stack đang phù hợp. Nếu tạo mới, chọn một kiến trúc đơn giản, được host hỗ trợ, có render trang sản phẩm cho SEO và backend thực. Có thể dùng Next.js + TypeScript + PostgreSQL + object storage; đây là phương án tham khảo, không ép nền tảng chỉ hỗ trợ frontend vào giả backend. Kiểm tra tài liệu chính thức/phiên bản tương thích và lock dependency.
+
+Ưu tiên monolith hoặc dịch vụ thương mại điện tử đã có nếu môi trường/nguồn lực phù hợp. Không thêm microservices, Redis, Elasticsearch hay Kubernetes chỉ vì trông chuyên nghiệp. Tài liệu nêu lựa chọn, chi phí dự kiến và giới hạn; không tự mua dịch vụ mất phí.
+
+Schema tối thiểu: Product, Variant, Category, Collection, Media, Branch, Inventory, InventoryMovement, Reservation, Order, OrderItem, Payment, Shipment, Promotion, StaffRole, AuditLog và Content. Bảng phụ chỉ thêm khi chức năng cần. Có migration, constraint, index, seed development riêng và bản sao lưu.
+
+Đơn hàng, tồn kho, tài khoản quản trị và khách hàng không lưu độc nhất trong localStorage hoặc bộ nhớ tiến trình. Không đặt secret vào JS trình duyệt, git, log, screenshot hay .env mẫu. Tách môi trường development/staging/production, khóa cổng test ở production.
+
+Đăng nhập qua cơ chế được duy trì; session/cookie bảo vệ, có thu hồi và timeout hợp lý. Bảo vệ CSRF khi kiến trúc cần; validate input phía server; truy vấn an toàn; rate-limit tại nơi lưu được trạng thái giữa các instance; chống XSS; giới hạn upload; security headers phù hợp. Admin account khởi tạo an toàn, không có password mặc định công khai.
+
+Sao lưu DB/ảnh và hướng dẫn phục hồi được thử trong môi trường riêng; health check, log che dữ liệu riêng, theo dõi lỗi, cảnh báo đơn/thanh toán thất bại. Lỗi thông báo không làm mất giao dịch. Có runbook xử lý payment pending, tồn lệch, hoàn/hủy, provider lỗi.
+
+L. SEO, HIỆU NĂNG VÀ NỘI DUNG CÔNG KHAI
+- URL có cấu trúc, slug ổn định, redirect khi đổi slug, title/meta riêng, canonical, sitemap, robots. Admin, checkout, tra cứu đơn và staging được bảo vệ/noindex thích hợp; robots không thay thế xác thực.
+- Product/Offer/Breadcrumb/Organization structured data chỉ theo dữ liệu thật; không có AggregateRating giả, giá/tồn phải phù hợp trang hiển thị.
+- Ảnh responsive WebP/AVIF theo hỗ trợ; kích thước cố định tránh nhảy layout; preload ảnh hero hợp lý, lazy-load ảnh dưới màn hình. Không lazy-load ảnh LCP; hạn chế JS và script theo dõi.
+- Mục tiêu dữ liệu thực ở p75: LCP ≤2.5s, INP ≤200ms, CLS ≤0.1. Trước launch dùng kiểm thử lab có ghi thiết bị/mạng; không tuyên bố đã đạt INP thực từ một lần chạy Lighthouse.
+- Nội dung tiếng Việt tự nhiên, không lorem ipsum, không dịch máy gượng ép, không hứa miễn phí/bảo hành dài hạn nếu chưa được xác nhận.
+- Analytics các bước view_item, add_to_cart, begin_checkout, purchase khi đã có công cụ phù hợp. Purchase phát theo giao dịch đã lưu đúng định nghĩa và chống đếm trùng. Không gửi tên, số điện thoại, địa chỉ vào analytics; script không thiết yếu chỉ bật theo cơ chế đồng ý phù hợp.
+- Đánh giá thật, có moderation; nếu tính năng đánh giá chưa triển khai thì không dựng số sao giả. Ảnh khách cần quyền sử dụng.
+
+M. RANH GIỚI BẢN ĐẦU VÀ NÂNG CẤP
+Bắt buộc bản đầu: catalog thật, trải nghiệm mobile, tìm kiếm/lọc, chi tiết/size, giỏ, lưu đơn, phương thức thanh toán được cấu hình, quản trị, tồn online có quy trình rõ, ba cửa hàng, nội dung/policy, khả năng deploy và kiểm thử nghiệp vụ.
+
+Nên hoàn thành cùng bản đầu nếu dữ liệu có: chọn quà theo quy tắc, wishlist, bộ phối thủ công, liên kết Shopee, hover ảnh, zoom và drawer. Nếu thiếu ảnh/quy trình, ẩn an toàn chứ không giả.
+
+Nâng cấp sau: đồng bộ Shopee qua quyền/API hợp lệ, POS, vận chuyển tự động, cổng thanh toán bổ sung, loyalty, khắc tên, đặt lịch, đánh giá xác minh mua, 360° có bộ ảnh thật, virtual try-on có dữ liệu chính xác. Không đưa AR/3D/chatbot/loyalty phức tạp vào bản đầu mặc định.
+
+Phần pháp lý: chuẩn bị thông tin người bán, chính sách giao dịch, bảo mật và xử lý dữ liệu; xác minh yêu cầu pháp lý/thuế/thủ tục thương mại điện tử đang áp dụng tại ngày launch từ nguồn chính thức và với đơn vị kinh doanh. Không tự khẳng định compliance hoặc đặt badge “đã thông báo/đã đăng ký” khi chưa hoàn tất thủ tục tương ứng. Nội dung cần chủ cửa hàng xác nhận phải đánh dấu trong tài liệu nội bộ.
+
+N. QUY TRÌNH THỰC HIỆN VÀ NGHIỆM THU
+1. Kiểm tra repo, runtime, môi trường và dữ liệu. Viết kế hoạch ngắn, danh sách giả định, những cấu hình còn thiếu và kiến trúc khả thi. Nếu thiếu thông tin thật, tiếp tục các việc độc lập; chỉ hỏi những điểm ảnh hưởng giao dịch/nhận diện mà không thể suy ra. Không ngừng làm chỉ vì chưa có logo/API.
+2. Xây design system và luồng trang chủ → danh mục → sản phẩm với dữ liệu nháp riêng. Chạy và chụp/render kiểm tra trên mobile/desktop. Không chỉ chọn template mặc định rồi đổi tên.
+3. Xây backend lưu đơn, tồn kho, phân quyền và quản trị. Kiểm thử giao dịch trước khi làm nhiều hiệu ứng.
+4. Thực hiện giỏ/thanh toán, quà/bộ phối, nội dung thật và cấu hình cửa hàng. Provider chưa có khóa phải ở chế độ test/ẩn, ghi rõ việc cần làm.
+5. Kiểm tra SEO, accessibility, hiệu năng, security và vận hành. Sửa lỗi trước khi kết luận.
+6. Chuẩn bị staging, tài liệu triển khai, cấu hình production và báo cáo nghiệm thu. Chỉ công khai/nhận thanh toán thật khi đã có dữ liệu, tài khoản và quyền triển khai tương ứng; yêu cầu xây website không tự cấp quyền mở tài khoản/dịch vụ trả phí.
+
+Các tình huống nghiệm thu bắt buộc, thực hiện kiểm thử phù hợp và ghi kết quả thật:
+- Chọn biến thể/size; giỏ không trộn SKU; refresh/back không làm sai giá/số lượng; không mua biến thể hết hàng.
+- Server bác giá/coupon giả; xác định phí đúng; bấm đặt hai lần chỉ tạo một đơn; lỗi mạng có retry an toàn.
+- Hai khách mua món cuối: chỉ một người giữ được tồn; hủy/hết hạn giữ chỗ trả tồn đúng một lần.
+- Chuyển khoản/COD còn trạng thái phù hợp; webhook sai bị từ chối; webhook trùng không ghi nhận tiền/tồn hai lần khi tích hợp cổng thanh toán.
+- Thanh toán đến muộn, đơn hủy/hoàn và notification lỗi được xử lý/đối soát rõ.
+- Nhân viên sai chi nhánh không xem/sửa được đơn bằng request trực tiếp; khách không đọc được đơn của người khác.
+- Dữ liệu đơn còn nguyên sau restart/deploy; thử backup/restore staging, không đụng production.
+- Tất cả nút có tác dụng; form có lỗi/loading/success; không link rỗng, ảnh vỡ, lỗi console nghiêm trọng.
+- Các kích thước màn hình đã nêu, bàn phím, reduced-motion, mạng chậm và ảnh dài/tên tiếng Việt dài.
+- Build/typecheck/lint phù hợp dự án; kiểm thử integration cho nghiệp vụ quan trọng; ghi rõ phần chưa thể test vì thiếu provider/credential.
+
+O. BÀN GIAO VÀ CÁCH TIẾP TỤC
+Cung cấp mã nguồn hoàn chỉnh, migration/schema, cấu hình mẫu không có secret, dữ liệu nháp tách riêng, README chạy local và deploy, hướng dẫn quản trị bằng tiếng Việt, hướng dẫn nhập catalog và quy chuẩn ảnh, test/report với kết quả thực, danh sách cấu hình thiếu và runbook vận hành.
+
+Tạo PROJECT_STATUS.md và cập nhật sau mỗi giai đoạn: đã xong, đang làm, lỗi thật, quyết định, dữ liệu cần chủ cửa hàng, việc kế tiếp và lệnh chạy. Nếu lượt trả lời bị giới hạn, lưu trạng thái và tiếp tục từ đó ở lượt sau; không viết lại dự án hoặc tuyên bố tự theo dõi quota nếu không có cơ chế đó.
+
+Cuối công việc báo rõ một trong ba trạng thái:
+- Bản xem trước: có giao diện, chưa đủ giao dịch/dữ liệu thật.
+- Staging đã kiểm thử: luồng hoạt động trong môi trường thử, còn việc cấu hình/duyệt được liệt kê.
+- Production đã triển khai: chỉ dùng khi đã triển khai thực tế, kiểm tra URL và những luồng được phép kiểm tra; nêu giới hạn còn lại.
+
+Đừng dùng câu “sẵn sàng production” chỉ vì build thành công. Mục tiêu là cửa hàng thật có thể bán hàng, khách hiểu mình mua gì và chủ cửa hàng quản lý được mỗi ngày.

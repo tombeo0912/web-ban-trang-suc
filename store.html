@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cửa hàng — Bạc Hải Yến</title>
+<meta name="description" content="Thông tin chi tiết một cửa hàng Bạc Hải Yến.">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="store">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap" style="padding-block:32px 0">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="stores.html">Cửa hàng</a></li>
+        <li><span aria-current="page" id="store-crumb">Cửa hàng</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-5">
+      <span class="eyebrow">Cửa hàng</span>
+      <h1 id="store-title">Cửa hàng</h1>
+    </header>
+
+    <!-- Thông tin chi tiết dựng bằng js/pages.js -->
+    <div id="store-root"></div>
+
+  </div>
+
+  <!-- Món đang bán.
+       Đây là danh mục chung, KHÔNG phải tồn kho của chi nhánh này. -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Danh mục</span>
+        <h2>Món đang bán</h2>
+      </div>
+      <div id="store-stock"></div>
+    </div>
+  </section>
+
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/pages.js"></script>
+
+</body>
+</html>

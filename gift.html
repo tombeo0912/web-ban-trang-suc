@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chọn quà tặng — Bạc Hải Yến</title>
+<meta name="description" content="Chọn quà trang sức bạc theo ba bước: người nhận, ngân sách và phong cách hoặc dịp tặng.">
+<link rel="canonical" href="https://bachaiyen.vn/gift.html">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="gift">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+
+  <div class="wrap wrap--mid" style="padding-block:32px 0">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Quà tặng</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-5">
+      <span class="eyebrow">Quà tặng</span>
+      <h1>Chọn quà trong ba bước</h1>
+      <p class="text-soft mt-3" style="max-width:60ch">
+        Nếu bạn chưa biết chọn món gì, hãy bắt đầu từ người nhận. Mỗi bước đều bỏ qua được,
+        nên bạn không cần trả lời hết cũng xem được gợi ý.
+      </p>
+    </header>
+
+    <!-- Thanh tiến trình -->
+    <div class="row row--between mb-4" id="gift-steps">
+      <span class="eyebrow" id="gift-progress" aria-live="polite">Bước 1 / 3</span>
+      <button class="btn btn--quiet" type="button" id="gift-back" hidden>← Quay lại</button>
+    </div>
+
+  </div>
+
+  <!-- ======================================================================
+       BƯỚC 1 — NGƯỜI NHẬN
+       ====================================================================== -->
+  <section class="section section--tight">
+    <div class="wrap wrap--mid">
+      <h2 class="mb-4">Bạn muốn tặng ai?</h2>
+      <div class="budget-grid" id="step-recipient"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BƯỚC 2 — NGÂN SÁCH
+       ====================================================================== -->
+  <section class="section section--tight" hidden>
+    <div class="wrap wrap--mid">
+      <h2 class="mb-4">Bạn dự tính khoảng bao nhiêu?</h2>
+      <div class="budget-grid" id="step-budget"></div>
+      <p class="text-xs text-faint mt-4">
+        Các khoảng giá này dựng từ giá thật của những món đang bán.
+        Món chưa niêm yết giá không được tính vào đây.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       BƯỚC 3 — PHONG CÁCH VÀ DỊP TẶNG
+       ====================================================================== -->
+  <section class="section section--tight" hidden>
+    <div class="wrap wrap--mid">
+      <h2 class="mb-4">Người nhận thích kiểu nào?</h2>
+      <div id="step-style"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       KẾT QUẢ
+       ====================================================================== -->
+  <section class="section" id="gift-results" hidden>
+    <div class="wrap">
+      <!-- Dựng bằng js/gift.js -->
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       GHI CHÚ VỀ DỊCH VỤ KÈM THEO
+       Chỉ hiện khi cửa hàng thực sự có dịch vụ gói quà hoặc khắc tên.
+       ====================================================================== -->
+  <section class="section section--muted">
+    <div class="wrap wrap--mid">
+      <div class="section-head">
+        <h2>Trước khi bạn quyết định</h2>
+      </div>
+
+      <div class="stack stack--3">
+        <details class="notice">
+          <summary style="cursor:pointer;font-weight:600">Bạc có xỉn màu không?</summary>
+          <p class="text-sm mt-3">
+            Có thể. Bạc phản ứng tự nhiên với không khí và mồ hôi nên sẽ xỉn dần theo thời gian.
+            Đây là đặc tính của bạc, không phải lỗi sản phẩm. Người nhận có thể làm sáng lại tại nhà.
+          </p>
+        </details>
+
+        <details class="notice">
+          <summary style="cursor:pointer;font-weight:600">Nếu người nhận không vừa size thì sao?</summary>
+          <p class="text-sm mt-3">
+            Nếu bạn chưa chắc về size, hãy chọn dây chuyền hoặc bông tai — hai món này ít phụ thuộc
+            kích cỡ hơn nhẫn. Cửa hàng sẽ tư vấn cụ thể qua hotline.
+          </p>
+        </details>
+
+        <details class="notice">
+          <summary style="cursor:pointer;font-weight:600">Cửa hàng có gói quà không?</summary>
+          <p class="text-sm mt-3">
+            Thông tin về gói quà và thiệp sẽ hiện ở đây khi cửa hàng xác nhận dịch vụ.
+            Hiện tại bạn gọi hotline để hỏi trực tiếp.
+          </p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/gift.js"></script>
+
+</body>
+</html>

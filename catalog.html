@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trang sức bạc — Bạc Hải Yến</title>
+<meta name="description" content="Xem toàn bộ trang sức bạc 925 của Bạc Hải Yến: nhẫn, bông tai, dây chuyền, mặt dây, vòng và lắc tay.">
+<link rel="canonical" href="https://bachaiyen.vn/catalog.html">
+<!-- Trang danh mục có nhiều biến thể lọc: không cần máy tìm kiếm đánh chỉ mục
+     các tổ hợp lọc, nhưng vẫn cho phép theo dõi liên kết để khách chia sẻ. -->
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="catalog">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+
+  <div class="wrap">
+    <!-- Điều hướng theo cấp -->
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Trang sức</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-4">
+      <span class="eyebrow">Toàn bộ sản phẩm</span>
+      <h1 id="catalog-title" data-default="Trang sức bạc">Trang sức bạc</h1>
+      <p class="text-soft text-sm" style="max-width:60ch;margin-top:8px">
+        Mỗi món đều ghi rõ chất liệu, lớp mạ và loại đá. Món nào chưa niêm yết giá sẽ hiện
+        “Liên hệ để biết giá” — bạn gọi hotline để được báo giá chính xác.
+      </p>
+    </header>
+
+    <!-- Bố cục hai cột trên desktop, một cột trên mobile -->
+    <div class="catalog-layout">
+
+      <!-- Bộ lọc trên desktop: bám theo khi cuộn -->
+      <aside class="filters-desktop" aria-label="Bộ lọc sản phẩm">
+        <div id="filters"></div>
+      </aside>
+
+      <!-- Vùng kết quả -->
+      <div>
+
+        <!-- Thanh công cụ: số lượng, nút mở bộ lọc trên mobile, sắp xếp -->
+        <div class="toolbar">
+          <span class="toolbar__count" id="count" aria-live="polite">Đang tải…</span>
+
+          <div class="toolbar__right">
+            <button class="btn btn--ghost btn--sm filters-mobile-trigger" type="button" id="open-filters">
+              Bộ lọc
+            </button>
+
+            <label class="sr-only" for="sort">Sắp xếp theo</label>
+            <select class="select" id="sort">
+              <option value="newest">Mới nhất</option>
+              <option value="price-asc">Giá tăng dần</option>
+              <option value="price-desc">Giá giảm dần</option>
+              <option value="name-asc">Tên A → Z</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Chip lọc đang áp dụng -->
+        <div class="chips" id="chips" hidden></div>
+
+        <!-- Lưới sản phẩm -->
+        <div class="product-grid" id="results" role="list"></div>
+
+        <!-- Phân trang -->
+        <nav class="row" id="pagination" style="justify-content:center;margin-top:32px"
+             aria-label="Phân trang"></nav>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Drawer bộ lọc cho mobile: có số kết quả, nút áp dụng và nút xóa lọc -->
+<div class="drawer drawer--bottom" id="drawer-filters" hidden
+     role="dialog" aria-modal="true" aria-label="Bộ lọc sản phẩm">
+  <div class="drawer__scrim" data-close></div>
+  <div class="drawer__panel">
+    <div class="drawer__grabber"></div>
+    <div class="drawer__head">
+      <h2>Bộ lọc</h2>
+      <button class="drawer__close" type="button" data-close aria-label="Đóng bộ lọc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="m5 5 14 14M19 5 5 19"/></svg>
+      </button>
+    </div>
+    <div class="drawer__body">
+      <div id="filters-mobile"></div>
+    </div>
+    <div class="drawer__foot">
+      <div class="row" style="gap:8px">
+        <button class="btn btn--ghost" type="button" id="clear-filters-mobile" style="flex:1">Xóa lọc</button>
+        <button class="btn" type="button" id="apply-filters" style="flex:2">Xem kết quả</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/catalog.js"></script>
+
+</body>
+</html>

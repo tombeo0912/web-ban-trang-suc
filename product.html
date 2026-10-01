@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chi tiết sản phẩm — Bạc Hải Yến</title>
+<meta name="description" content="Thông tin chi tiết sản phẩm trang sức bạc tại Bạc Hải Yến.">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+<!-- Tiêu đề, mô tả và dữ liệu có cấu trúc được cập nhật bằng JS theo sản phẩm.
+     Khi có backend, phần này cần được render ở phía máy chủ để máy tìm kiếm
+     đọc được nội dung đầy đủ. Xem PROJECT_STATUS.md. -->
+</head>
+<body data-page="product">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap">
+
+    <nav class="crumbs" aria-label="Đường dẫn" id="crumbs"></nav>
+
+    <!-- Khối chính: thư viện ảnh bên trái, thông tin mua bên phải trên desktop.
+         Trên mobile xếp dọc: ảnh, tên và giá, lựa chọn, nút mua, rồi mới tới
+         phần mô tả dài. -->
+    <div class="pdp" id="pdp-root">
+      <!-- Dựng bằng JS trong js/product.js -->
+    </div>
+
+    <!-- Khối nội dung mở rộng: mô tả, chất liệu, giao hàng, hướng dẫn size, FAQ -->
+    <div class="accordion mt-5" id="details" style="max-width:820px"></div>
+
+  </div>
+
+  <!-- Phối cùng -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Phối cùng</span>
+        <h2>Đeo cùng món này</h2>
+      </div>
+      <div class="product-grid" id="pairs"></div>
+    </div>
+  </section>
+
+  <!-- Sản phẩm đã xem -->
+  <section class="section section--muted">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Đã xem</span>
+        <h2>Bạn vừa xem</h2>
+      </div>
+      <div class="product-grid" id="seen"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Thanh mua cố định trên mobile.
+     Chỉ hiện khi nút mua gốc đã ra khỏi màn hình. -->
+<div class="buybar" id="buybar" aria-hidden="false">
+  <div class="buybar__info">
+    <strong id="buybar-name"></strong>
+    <span id="buybar-meta"></span>
+  </div>
+  <button class="btn" type="button" id="buybar-add">Thêm vào giỏ</button>
+</div>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/product.js"></script>
+
+</body>
+</html>

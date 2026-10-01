@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bạc Hải Yến — Trang sức bạc 925</title>
+<meta name="description" content="Bạc Hải Yến — trang sức bạc 925 thanh lịch, gần gũi. Nhẫn, bông tai, dây chuyền, vòng tay. Cửa hàng tại Thái Bình, Hà Nội và Hải Phòng.">
+<link rel="canonical" href="https://bachaiyen.vn/">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/favicon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bạc Hải Yến — Trang sức bạc 925">
+<meta property="og:description" content="Chọn món trang sức đồng hành cùng những khoảnh khắc của bạn.">
+<meta property="og:image" content="assets/logo/logo-lockup-on-dark.png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<!-- Header dựng bằng JS để mọi trang dùng chung một nguồn -->
+<div data-header></div>
+
+<main id="main">
+
+  <!-- ======================================================================
+       1. HERO — MỘT ẢNH CHỦ ĐẠO, KHÔNG DÙNG BĂNG CHUYỀN TỰ XOAY
+       Ảnh cần: assets/img/hero-lifestyle.jpg (tỷ lệ ngang, có người đeo bạc)
+       ====================================================================== -->
+  <section class="hero">
+    <div class="hero__media" data-hero-media>
+      <!-- Ảnh chèn bằng JS để tự xử lý khi file chưa có -->
+    </div>
+
+    <div class="hero__content">
+      <span class="eyebrow">Trang sức bạc 925</span>
+      <h1 class="hero__title">Một chút bạc,<br>một nét riêng.</h1>
+      <p class="hero__sub">Chọn món trang sức đồng hành cùng những khoảnh khắc của bạn.</p>
+
+      <div class="hero__cta">
+        <a class="btn btn--lg" href="catalog.html">Khám phá trang sức</a>
+        <a class="btn btn--outline btn--lg" href="gift.html">Chọn quà tặng</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       2. KHÁM PHÁ THEO LOẠI
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--row reveal">
+        <div class="section-head__text">
+          <span class="eyebrow">Danh mục</span>
+          <h2>Khám phá theo loại</h2>
+        </div>
+        <a class="btn btn--ghost btn--sm" href="catalog.html">Xem tất cả</a>
+      </div>
+
+      <div class="grid grid--4" id="home-categories"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       3. SẢN PHẨM NỔI BẬT
+       Nhãn "Gợi ý từ cửa hàng" thay cho "Bán chạy" vì chưa có dữ liệu bán hàng.
+       ====================================================================== -->
+  <section class="section section--surface">
+    <div class="wrap">
+      <div class="section-head section-head--row reveal">
+        <div class="section-head__text">
+          <span class="eyebrow">Gợi ý từ cửa hàng</span>
+          <h2>Món khách hỏi nhiều</h2>
+          <p>Những món khách ghé cửa hàng hỏi nhiều trong thời gian gần đây.</p>
+        </div>
+      </div>
+
+      <div class="product-grid" id="home-featured"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       4. BỘ SƯU TẬP BIÊN TẬP
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="editorial reveal" id="home-editorial"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       5. PHỐI CÙNG — ẢNH THẬT + DANH SÁCH MÓN CHỌN ĐƯỢC
+       Danh sách là nơi thao tác thật; điểm nóng trên ảnh chỉ là lớp trang trí.
+       ====================================================================== -->
+  <section class="section section--muted">
+    <div class="wrap">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Phối cùng</span>
+        <h2>Đeo cùng nhau</h2>
+        <p>Một cách phối đơn giản để bắt đầu, chọn từng món theo ý bạn.</p>
+      </div>
+
+      <div class="pairing" id="home-pairing"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       6. CHỌN QUÀ THEO NGÂN SÁCH
+       Khoảng giá dựng từ catalog thật, không lấy mức giá của thương hiệu khác.
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Quà tặng</span>
+        <h2>Chọn quà theo ngân sách</h2>
+        <p>Bắt đầu từ khoảng giá bạn đã dự tính, rồi lọc tiếp theo người nhận và dịp tặng.</p>
+      </div>
+
+      <div class="budget-grid reveal" id="home-budget"></div>
+
+      <div class="text-center mt-5 reveal">
+        <a class="btn btn--outline" href="gift.html">Chọn quà theo ba bước</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       7. THƯƠNG HIỆU VÀ CỬA HÀNG
+       ====================================================================== -->
+  <section class="section section--surface">
+    <div class="wrap">
+      <div class="section-head section-head--row reveal">
+        <div class="section-head__text">
+          <span class="eyebrow">Cửa hàng</span>
+          <h2>Ghé thăm Bạc Hải Yến</h2>
+          <p>Ba cửa hàng ở Thái Bình, Hà Nội và Hải Phòng.</p>
+        </div>
+        <a class="btn btn--ghost btn--sm" href="stores.html">Tìm cửa hàng</a>
+      </div>
+
+      <div class="grid grid--3" id="home-branches"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       8. CẨM NANG
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head section-head--row reveal">
+        <div class="section-head__text">
+          <span class="eyebrow">Cẩm nang</span>
+          <h2>Đọc trước khi chọn</h2>
+        </div>
+        <a class="btn btn--ghost btn--sm" href="guides.html">Xem tất cả</a>
+      </div>
+
+      <div class="grid grid--3" id="home-guides"></div>
+    </div>
+  </section>
+
+  <!--
+    KHỐI ĐÁNH GIÁ KHÁCH HÀNG
+    Chưa có dữ liệu thật và chưa có văn bản đồng ý sử dụng hình ảnh của khách,
+    nên khối này được bỏ hẳn thay vì dựng số sao giả.
+    Khi có đánh giá thật, thêm lại tại đây.
+  -->
+
+</main>
+
+<!-- Footer dựng bằng JS -->
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/home.js"></script>
+
+</body>
+</html>

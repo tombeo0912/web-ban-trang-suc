@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài viết — Bạc Hải Yến</title>
+<meta name="description" content="Cẩm nang trang sức bạc từ Bạc Hải Yến.">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="guide">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap wrap--narrow" style="padding-block:32px 64px">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="guides.html">Cẩm nang</a></li>
+        <li><span aria-current="page" id="guide-crumb">Bài viết</span></li>
+      </ol>
+    </nav>
+
+    <!-- Nội dung bài viết dựng bằng js/pages.js, đọc từ data/config.js -->
+    <div id="guide-root"></div>
+
+  </div>
+
+  <section class="section section--muted">
+    <div class="wrap wrap--narrow">
+      <div class="section-head">
+        <h2>Đọc tiếp</h2>
+      </div>
+      <div id="guide-others"></div>
+    </div>
+  </section>
+
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/pages.js"></script>
+
+</body>
+</html>

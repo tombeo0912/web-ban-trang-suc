@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hệ thống cửa hàng — Bạc Hải Yến</title>
+<meta name="description" content="Cửa hàng Bạc Hải Yến tại Thái Bình, Hà Nội và Hải Phòng.">
+<link rel="canonical" href="https://bachaiyen.vn/stores.html">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="stores">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap" style="padding-block:32px 64px">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Cửa hàng</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-5" style="max-width:60ch">
+      <span class="eyebrow">Hệ thống cửa hàng</span>
+      <h1>Ba cửa hàng ở miền Bắc</h1>
+      <p class="text-soft mt-3">
+        Bạc Hải Yến hiện có mặt tại Thái Bình, Hà Nội và Hải Phòng.
+        Bạn ghé cửa hàng để xem trực tiếp, hoặc gọi điện trước để hỏi món mình cần.
+      </p>
+    </header>
+
+    <!-- Thông báo về giới hạn tồn kho.
+         Hệ thống chưa theo dõi tồn riêng từng chi nhánh, nên phải nói rõ để
+         khách không tới nơi rồi mới biết không có hàng. -->
+    <div class="notice notice--info mb-5" style="max-width:70ch">
+      <span class="notice__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      </span>
+      <div>
+        <p><strong>Nên gọi trước khi ghé.</strong></p>
+        <p class="text-sm">
+          Website hiển thị danh mục chung, chưa phải tồn kho riêng của từng cửa hàng.
+          Nếu bạn đang nhắm một món cụ thể, hãy gọi hotline để cửa hàng kiểm tra và giữ món đó cho bạn.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid--3" id="stores-root"></div>
+
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/pages.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+{
+  "_readme": [
+    "ĐÂY LÀ FILE BẠN THÊM SẢN PHẨM VÀO.",
+    "Mỗi sản phẩm là một khối trong mảng 'products'. Nhân bản một khối, sửa nội dung, lưu file, tải lại trang web là xong.",
+    "Ảnh: bỏ file ảnh vào thư mục assets/products/ rồi ghi đường dẫn vào 'images'.",
+    "Nếu chưa có ảnh, cứ để nguyên đường dẫn dự kiến — web sẽ tự hiện khung giữ chỗ êm, không báo lỗi vỡ ảnh.",
+    "Giá: ghi số nguyên đồng, KHÔNG gõ dấu chấm hay chữ 'đ'. Ví dụ 680000, không gõ 680.000đ.",
+    "Không biết giá thì ghi null — web sẽ hiện 'Liên hệ để biết giá' và tắt nút thêm vào giỏ.",
+    "Sản phẩm nào chưa muốn hiện lên web thì đặt 'published': false.",
+    "Chi tiết đầy đủ cách điền: xem file data/README-catalog.md"
+  ],
+
+  "categories": [
+    { "id": "nhan",         "name": "Nhẫn",              "image": "assets/img/cat-nhan.jpg",     "order": 1 },
+    { "id": "bong-tai",     "name": "Bông tai",           "image": "assets/img/cat-bong-tai.jpg", "order": 2 },
+    { "id": "day-chuyen",   "name": "Dây chuyền",         "image": "assets/img/cat-day-chuyen.jpg", "order": 3 },
+    { "id": "mat-day",      "name": "Mặt dây",            "image": "assets/img/cat-mat-day.jpg",  "order": 4 },
+    { "id": "vong-lac-tay", "name": "Vòng & lắc tay",     "image": "assets/img/cat-vong-tay.jpg", "order": 5 },
+    { "id": "khuyen-nu",    "name": "Khuyên nụ",          "image": "assets/img/cat-khuyen-nu.jpg", "order": 6 }
+  ],
+
+  "collections": [
+    {
+      "id": "noi-bat",
+      "name": "Gợi ý từ cửa hàng",
+      "description": "Những món khách ghé cửa hàng hỏi nhiều trong thời gian gần đây.",
+      "image": "assets/img/collection-noi-bat.jpg",
+      "skus": []
+    }
+  ],
+
+  "products": [
+    {
+      "id": "nhan-bac-925-nu-da-xanh",
+      "sku": "BHY-N001",
+      "slug": "nhan-bac-925-nu-da-xanh",
+      "name": "Nhẫn bạc 925 nữ đá xanh",
+      "shortDescription": "Sắc xanh tươi mát, lấp lánh nổi bật, lên tay sang xinh và cuốn hút.",
+      "description": [
+        "Nhẫn nữ chế tác từ bạc 925, gắn viên đá màu xanh nhân tạo với các giác cắt nhỏ giúp bắt sáng tốt khi đeo.",
+        "Sắc xanh tươi mát dễ phối với cả trang phục hằng ngày và trang phục dự tiệc. Thiết kế thanh mảnh nên tôn được bàn tay nhỏ.",
+        "Đá trên nhẫn là đá nhân tạo. Màu sắc và độ lấp lánh của đá nhân tạo có thể khác nhau chút ít giữa các viên do đặc tính của vật liệu."
+      ],
+      "published": true,
+      "featured": true,
+
+      "categoryId": "nhan",
+      "collectionIds": ["noi-bat"],
+
+      "price": 500000,
+      "compareAtPrice": null,
+      "priceNote": "",
+      "priceIsPlaceholder": true,
+
+      "material": "Bạc 925",
+      "plating": "Không mạ",
+      "stone": "Đá nhân tạo màu xanh",
+      "weightGrams": null,
+      "dimensions": "",
+
+      "images": [
+        "assets/products/nhan-bac-925-nu-da-xanh-1.jpg",
+        "assets/products/nhan-bac-925-nu-da-xanh-2.jpg",
+        "assets/products/nhan-bac-925-nu-da-xanh-3.jpg"
+      ],
+      "hoverImage": "assets/products/nhan-bac-925-nu-da-xanh-2.jpg",
+
+      "requiresSize": true,
+      "sizeOptions": [],
+      "sizeGuideId": "nhan",
+
+      "variants": [],
+      "inStock": null,
+      "stockNote": "Vui lòng liên hệ cửa hàng để kiểm tra còn hàng.",
+
+      "tags": ["nữ", "đá xanh", "bạc 925", "dự tiệc", "quà tặng"],
+      "giftOccasions": ["sinh-nhat", "ky-niem"],
+      "giftRecipients": ["ban-gai", "vo", "chi-em", "ban-than"],
+      "giftStyles": ["noi-bat", "thanh-lich"],
+
+      "shopeeUrl": "",
+      "pairsWith": ["khuyen-tai-bac-925-ngoc-trai"]
+    },
+
+    {
+      "id": "khuyen-nu-bac-925-xi-vang-trang",
+      "sku": "BHY-K002",
+      "slug": "khuyen-nu-bac-925-xi-vang-trang",
+      "name": "Khuyên nụ bạc 925 xi vàng trắng",
+      "shortDescription": "Nhỏ xinh, thanh lịch, dễ phối đồ.",
+      "description": [
+        "Khuyên nụ bạc 925 phủ lớp xi vàng trắng, kích thước nhỏ gọn ôm sát dái tai nên đeo được cả ngày mà không vướng.",
+        "Kiểu dáng tối giản hợp với nhiều phong cách, từ đi làm, đi học tới dự tiệc. Có thể đeo cùng lúc nhiều lỗ xỏ để tạo lớp.",
+        "Lớp xi vàng trắng là lớp phủ bề mặt. Theo thời gian và tần suất sử dụng, lớp xi có thể mờ dần ở vị trí ma sát nhiều — đây là đặc tính chung của trang sức có lớp xi, không phải lỗi sản phẩm."
+      ],
+      "published": true,
+      "featured": true,
+
+      "categoryId": "khuyen-nu",
+      "collectionIds": ["noi-bat"],
+
+      "price": 500000,
+      "compareAtPrice": null,
+      "priceNote": "",
+      "priceIsPlaceholder": true,
+
+      "material": "Bạc 925",
+      "plating": "Xi vàng trắng",
+      "stone": "Không đá",
+      "weightGrams": null,
+      "dimensions": "",
+
+      "images": [
+        "assets/products/khuyen-nu-bac-925-xi-vang-trang-1.jpg",
+        "assets/products/khuyen-nu-bac-925-xi-vang-trang-2.jpg",
+        "assets/products/khuyen-nu-bac-925-xi-vang-trang-3.jpg"
+      ],
+      "hoverImage": "assets/products/khuyen-nu-bac-925-xi-vang-trang-2.jpg",
+
+      "requiresSize": false,
+      "sizeOptions": [],
+      "sizeGuideId": "",
+
+      "variants": [],
+      "inStock": null,
+      "stockNote": "Vui lòng liên hệ cửa hàng để kiểm tra còn hàng.",
+
+      "tags": ["nữ", "xi vàng trắng", "bạc 925", "đi làm", "hằng ngày"],
+      "giftOccasions": ["sinh-nhat", "cam-on"],
+      "giftRecipients": ["ban-gai", "vo", "chi-em", "me", "ban-than"],
+      "giftStyles": ["toi-gian", "thanh-lich"],
+
+      "shopeeUrl": "",
+      "pairsWith": ["khuyen-tai-bac-925-ngoc-trai"]
+    },
+
+    {
+      "id": "khuyen-tai-bac-925-ngoc-trai",
+      "sku": "BHY-K003",
+      "slug": "khuyen-tai-bac-925-ngoc-trai",
+      "name": "Khuyên tai bạc 925 kết hợp ngọc trai",
+      "shortDescription": "Thiết kế tinh tế, thanh lịch.",
+      "description": [
+        "Khuyên tai bạc 925 kết hợp ngọc trai, thiết kế tinh tế và thanh lịch, phù hợp cả trang phục hằng ngày lẫn trang phục dự tiệc.",
+        "Ngọc trai là vật liệu tự nhiên nên từng viên có thể chênh lệch nhẹ về kích thước, độ tròn và ánh. Sự khác biệt này là đặc trưng của ngọc trai tự nhiên, không phải lỗi sản phẩm.",
+        "Khuyên tai bán theo đôi."
+      ],
+      "published": true,
+      "featured": true,
+
+      "categoryId": "bong-tai",
+      "collectionIds": ["noi-bat"],
+
+      "price": 500000,
+      "compareAtPrice": null,
+      "priceNote": "",
+      "priceIsPlaceholder": true,
+
+      "material": "Bạc 925",
+      "plating": "Không mạ",
+      "stone": "Ngọc trai",
+      "weightGrams": null,
+      "dimensions": "",
+
+      "images": [
+        "assets/products/khuyen-tai-bac-925-ngoc-trai-1.jpg",
+        "assets/products/khuyen-tai-bac-925-ngoc-trai-2.jpg",
+        "assets/products/khuyen-tai-bac-925-ngoc-trai-3.jpg"
+      ],
+      "hoverImage": "assets/products/khuyen-tai-bac-925-ngoc-trai-2.jpg",
+
+      "requiresSize": false,
+      "sizeOptions": [],
+      "sizeGuideId": "",
+
+      "variants": [],
+      "inStock": null,
+      "stockNote": "Vui lòng liên hệ cửa hàng để kiểm tra còn hàng.",
+
+      "tags": ["nữ", "ngọc trai", "bạc 925", "dự tiệc", "quà tặng"],
+      "giftOccasions": ["sinh-nhat", "ky-niem", "cam-on"],
+      "giftRecipients": ["ban-gai", "vo", "chi-em", "me", "dong-nghiep"],
+      "giftStyles": ["thanh-lich", "nu-tinh"],
+
+      "shopeeUrl": "",
+      "pairsWith": ["khuyen-nu-bac-925-xi-vang-trang"]
+    }
+  ],
+
+  "sizeGuides": [
+    {
+      "id": "nhan",
+      "title": "Bảng size nhẫn",
+      "note": "Bảng size dưới đây là chỗ trống có chủ ý. Cần điền theo thang size thực tế của cửa hàng trước khi khách đặt nhẫn. Không suy ra từ bảng quy đổi chung.",
+      "headers": ["Cỡ", "Chu vi ngón tay (mm)", "Đường kính trong (mm)"],
+      "rows": [],
+      "needsStoreData": true
+    }
+  ]
+}

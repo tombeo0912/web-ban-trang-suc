@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đặt hàng — Bạc Hải Yến</title>
+<meta name="description" content="Hoàn tất đặt hàng tại Bạc Hải Yến.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="checkout">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap wrap--mid" style="padding-block:32px 64px">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><a href="cart.html">Giỏ hàng</a></li>
+        <li><span aria-current="page">Đặt hàng</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-4">
+      <span class="eyebrow">Bước 2 / 2</span>
+      <h1>Thông tin nhận hàng</h1>
+    </header>
+
+    <!--
+      Trang này hiện chưa nhận đơn. Lý do nằm ở chỗ: đơn hàng phải được lưu vào
+      cơ sở dữ liệu thật, kèm kiểm tra lại giá và tồn kho ở máy chủ, chống đặt
+      trùng và giữ chỗ hàng. Những phần đó thuộc backend và chưa được triển khai.
+
+      Hiển thị một biểu mẫu rồi báo "đặt hàng thành công" mà không lưu được đơn
+      sẽ khiến khách tưởng đã mua, còn cửa hàng không nhận được gì.
+      Xem PROJECT_STATUS.md phần "Việc còn thiếu để nhận đơn thật".
+    -->
+    <div id="checkout-root"></div>
+
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/cart.js"></script>
+
+</body>
+</html>

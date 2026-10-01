@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sản phẩm yêu thích — Bạc Hải Yến</title>
+<meta name="description" content="Danh sách trang sức bạc bạn đã lưu tại Bạc Hải Yến.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body data-page="wishlist">
+
+<a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+
+<div data-header></div>
+
+<main id="main">
+  <div class="wrap" style="padding-block:32px 64px">
+
+    <nav class="crumbs" aria-label="Đường dẫn">
+      <ol>
+        <li><a href="index.html">Trang chủ</a></li>
+        <li><span aria-current="page">Yêu thích</span></li>
+      </ol>
+    </nav>
+
+    <header class="mb-4">
+      <span class="eyebrow">Đã lưu</span>
+      <h1>Sản phẩm yêu thích</h1>
+      <p class="text-sm text-soft mt-2" id="wish-title"></p>
+    </header>
+
+    <!--
+      Danh sách này lưu ngay trên trình duyệt của bạn, không gửi lên máy chủ.
+      Nó chỉ chứa mã sản phẩm — không chứa tên, số điện thoại hay địa chỉ.
+      Bạn có thể xóa bất cứ lúc nào bằng nút bên dưới.
+    -->
+    <div class="row mb-4">
+      <button class="btn btn--ghost btn--sm" type="button" id="wish-clear" hidden>
+        Xóa toàn bộ danh sách
+      </button>
+    </div>
+
+    <div class="product-grid" id="results"></div>
+
+  </div>
+</main>
+
+<div data-footer></div>
+
+<script src="data/config.js"></script>
+<script src="js/core.js"></script>
+<script src="js/catalog.js"></script>
+
+</body>
+</html>

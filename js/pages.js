@@ -130,7 +130,7 @@
       ]);
 
       mount.appendChild(el('div', { class: 'branch-card' }, [
-        H.picture({ src: b.image, alt: 'Cửa hàng ' + b.name, ratio: '3x2', label: 'Ảnh cửa hàng ' + b.name }),
+        b.image ? H.picture({ src: b.image, alt: 'Cửa hàng ' + b.name, ratio: '3x2', label: 'Ảnh cửa hàng ' + b.name }) : null,
         body
       ]));
     });
@@ -184,19 +184,18 @@
       ] : null)
     ]);
 
-    var missing = !b.address || !b.hours;
+    var missing = !b.hours || (!b.address && !b.mapUrl);
 
-    mount.appendChild(el('div', { class: 'grid', style: 'gap:32px' }, [
-      el('div', {}, [
+    mount.appendChild(el('div', { class: b.image ? 'grid' : '', style: 'gap:32px' }, [
+      b.image ? el('div', {}, [
         H.picture({ src: b.image, alt: 'Cửa hàng ' + b.name, ratio: '3x2', label: 'Ảnh cửa hàng ' + b.name })
-      ]),
+      ]) : null,
       el('div', {}, [
         rows,
         missing
           ? el('div', { class: 'mt-4' }, [
               pendingBlock('Thông tin cửa hàng đang được cập nhật',
-                'Địa chỉ chi tiết và giờ mở cửa của cửa hàng tại ' + b.name + ' chưa được xác nhận. ' +
-                'Bạn gọi hotline để được hướng dẫn đường tới cửa hàng.')
+                'Bạn gọi hotline để được hướng dẫn đường tới cửa hàng tại ' + b.name + '.')
             ])
           : null,
         el('div', { class: 'row mt-4' }, hotlineLinks())
@@ -272,7 +271,7 @@
 
     guides.forEach(function (g) {
       mount.appendChild(el('a', { class: 'guide-card', href: 'guide.html?slug=' + encodeURIComponent(g.slug) }, [
-        H.picture({ src: g.image, alt: '', ratio: '3x2', label: '' }),
+        g.image ? H.picture({ src: g.image, alt: '', ratio: '3x2', label: '' }) : null,
         el('div', { class: 'guide-card__body' }, [
           el('h2', { style: 'font-size:1.0625rem;font-weight:600', text: g.title }),
           el('p', { text: g.excerpt || '' }),
@@ -311,7 +310,7 @@
     mount.innerHTML = '';
 
     mount.appendChild(el('article', {}, [
-      H.picture({ src: g.image, alt: '', ratio: '3x2', label: '' }),
+      g.image ? H.picture({ src: g.image, alt: '', ratio: '3x2', label: '' }) : null,
 
       el('header', { class: 'mt-5' }, [
         el('h1', { text: g.title }),
@@ -362,14 +361,14 @@
     var branches = H.CFG.branches || [];
 
     // Những gì thực sự biết chắc: tên thương hiệu, ngành hàng, các khu vực cửa hàng.
-    // Câu chuyện thương hiệu, số năm kinh nghiệm, chứng nhận — chưa có, KHÔNG bịa.
+    // Chỉ hiển thị thông tin đã được xác nhận.
     mount.appendChild(el('div', { class: 'stack stack--5' }, [
 
       el('div', {}, [
         el('h2', { text: 'Bạc Hải Yến' }),
         el('p', {
           class: 'text-soft',
-          text: 'Bạc Hải Yến là cửa hàng trang sức bạc tại miền Bắc, hiện có mặt ở Thái Bình, Hà Nội và Hải Phòng. ' +
+          text: 'Bạc Hải Yến là cửa hàng trang sức bạc tại miền Bắc, hiện có mặt ở Thái Bình và Hải Phòng. ' +
                 'Chúng tôi tập trung vào trang sức bạc 925 với thiết kế thanh lịch, dễ đeo hằng ngày.'
         })
       ]),
@@ -384,28 +383,14 @@
           }))
       ]),
 
-      /* PHẦN NÀY CHỜ CHỦ CỬA HÀNG */
-      el('div', {}, [
-        el('h3', { style: 'font-size:1.125rem;margin-bottom:12px', text: 'Câu chuyện cửa hàng' }),
-        pendingBlock('Phần này đang chờ nội dung từ chủ cửa hàng',
-          'Website cố ý không tự viết câu chuyện thương hiệu, số năm kinh nghiệm hay các chứng nhận, ' +
-          'vì đó là những điều chỉ chủ cửa hàng biết và chịu trách nhiệm. ' +
-          'Khi bạn gửi nội dung, phần này sẽ được đưa lên ngay.')
-      ]),
-
-      /* THÔNG TIN PHÁP LÝ */
-      el('div', {}, [
+      biz.taxCode || biz.registeredAddress ? el('div', {}, [
         el('h3', { style: 'font-size:1.125rem;margin-bottom:12px', text: 'Thông tin đơn vị kinh doanh' }),
-        biz.taxCode || biz.registeredAddress
-          ? el('dl', { style: 'margin:0' }, [
-              contactRow('Tên đơn vị', biz.legalName || null),
-              contactRow('Mã số thuế', biz.taxCode || null),
-              contactRow('Địa chỉ đăng ký', biz.registeredAddress || null)
-            ])
-          : pendingBlock('Thông tin đăng ký kinh doanh chưa được công bố',
-              'Website không tự đặt mã số thuế, địa chỉ đăng ký hay các nhãn xác nhận thủ tục thương mại điện tử. ' +
-              'Những thông tin này sẽ được đưa lên sau khi chủ cửa hàng xác nhận.')
-      ])
+        el('dl', { style: 'margin:0' }, [
+          contactRow('Tên đơn vị', biz.legalName || null),
+          contactRow('Mã số thuế', biz.taxCode || null),
+          contactRow('Địa chỉ đăng ký', biz.registeredAddress || null)
+        ])
+      ]) : null
 
     ]));
   }
@@ -425,11 +410,10 @@
     mount.appendChild(el('div', { class: 'stack stack--4' }, [
 
       el('div', {}, [
-        el('h2', { text: 'Gọi điện hoặc gửi email' }),
+        el('h2', { text: 'Liên hệ Bạc Hải Yến' }),
         el('p', {
           class: 'text-soft',
-          text: 'Website đang trong giai đoạn chuẩn bị nên chưa nhận đơn trực tuyến. ' +
-                'Cách nhanh nhất để đặt hàng hoặc hỏi về một món cụ thể là gọi hotline.'
+          text: 'Bạn có thể gọi hotline hoặc dùng các kênh chính thức bên dưới để hỏi về sản phẩm. Cửa hàng sẽ xác nhận tình trạng hàng và cách nhận.'
         })
       ]),
 
@@ -448,9 +432,6 @@
         contactRow('Instagram', c.instagram ? [el('a', { href: c.instagram, rel: 'noopener', text: 'Mở Instagram' })] : null),
         contactRow('Shopee', c.shopee ? [el('a', { href: c.shopee, rel: 'noopener', text: 'Mở gian hàng Shopee' })] : null)
       ]),
-
-      // Nói rõ kênh nào chưa có, thay vì để trống không giải thích
-      buildMissingChannels(c),
 
       /* ------------------------------------------------------ BIỂU MẪU */
       el('div', { class: 'mt-5' }, [

@@ -19,14 +19,12 @@
     var mount = $('[data-hero-media]');
     if (!mount) return;
 
-    // Ảnh chủ đạo cần: assets/img/hero-lifestyle.jpg
-    // Ảnh riêng cho mobile để không cắt mất trang sức: assets/img/hero-lifestyle-mobile.jpg
     mount.appendChild(H.picture({
-      src: 'assets/img/hero-lifestyle.jpg',
-      alt: 'Người đeo trang sức bạc của Bạc Hải Yến',
+      src: 'assets/products/khuyen-tai-bac-925-ngoc-trai-1.jpg',
+      alt: 'Khuyên tai bạc 925 kết hợp ngọc trai',
       ratio: '4x5',
       loading: 'eager',           // ảnh lớn nhất trang, không lazy-load
-      label: 'Ảnh chủ đạo — đeo bạc'
+      label: 'Trang sức bạc Bạc Hải Yến'
     }));
   }
 
@@ -282,10 +280,10 @@
     // Ảnh bộ phối: ưu tiên ảnh lifestyle riêng, nếu chưa có thì dùng ảnh món đầu
     var media = el('div', { class: 'pairing__media' });
     media.appendChild(H.picture({
-      src: 'assets/img/pairing-lifestyle.jpg',
-      alt: 'Bộ trang sức phối cùng nhau',
+      src: (set[0].images && set[0].images[0]) || '',
+      alt: set[0].name,
       ratio: '4x5',
-      label: 'Ảnh phối cùng'
+      label: set[0].name
     }));
 
     // Điểm nóng chỉ hiện trên màn hình lớn — trên mobile danh sách bên cạnh
@@ -296,7 +294,7 @@
       { top: '72%', left: '38%' }
     ];
 
-    set.forEach(function (p, i) {
+    set.slice(0, 1).forEach(function (p, i) {
       if (!positions[i]) return;
       var hs = el('button', {
         class: 'pairing__hotspot',
@@ -344,7 +342,7 @@
     mount.appendChild(media);
     mount.appendChild(el('div', {}, [
       el('p', { class: 'text-sm text-soft', style: 'margin:0 0 16px',
-        text: 'Chọn từng món theo ý bạn. Bấm vào món để xem chi tiết, chọn size rồi thêm vào giỏ.' }),
+        text: 'Chọn từng món theo ý bạn. Bấm vào món để xem chi tiết rồi lưu vào danh sách trước khi liên hệ cửa hàng.' }),
       list
     ]));
   }
@@ -458,7 +456,7 @@
       ]);
 
       mount.appendChild(el('div', { class: 'branch-card' }, [
-        H.picture({ src: b.image, alt: 'Cửa hàng ' + b.name, ratio: '3x2', label: 'Ảnh cửa hàng ' + b.name }),
+        b.image ? H.picture({ src: b.image, alt: 'Cửa hàng ' + b.name, ratio: '3x2', label: 'Ảnh cửa hàng ' + b.name }) : null,
         body
       ]));
     });
@@ -482,7 +480,7 @@
 
     guides.forEach(function (g) {
       mount.appendChild(el('a', { class: 'guide-card', href: 'guide.html?slug=' + encodeURIComponent(g.slug) }, [
-        H.picture({ src: g.image, alt: '', ratio: '3x2', label: '' }),
+        g.image ? H.picture({ src: g.image, alt: '', ratio: '3x2', label: '' }) : null,
         el('div', { class: 'guide-card__body' }, [
           el('h3', { text: g.title }),
           el('p', { text: g.excerpt || '' })

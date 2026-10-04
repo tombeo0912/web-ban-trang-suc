@@ -11,20 +11,20 @@
   ],
 
   "categories": [
-    { "id": "nhan",         "name": "Nhẫn",              "image": "assets/img/cat-nhan.jpg",     "order": 1 },
-    { "id": "bong-tai",     "name": "Bông tai",           "image": "assets/img/cat-bong-tai.jpg", "order": 2 },
+    { "id": "nhan",         "name": "Nhẫn",              "image": "assets/products/nhan-bac-925-nu-da-xanh-1.jpg", "order": 1 },
+    { "id": "bong-tai",     "name": "Bông tai",           "image": "assets/products/khuyen-tai-bac-925-ngoc-trai-1.jpg", "order": 2 },
     { "id": "day-chuyen",   "name": "Dây chuyền",         "image": "assets/img/cat-day-chuyen.jpg", "order": 3 },
     { "id": "mat-day",      "name": "Mặt dây",            "image": "assets/img/cat-mat-day.jpg",  "order": 4 },
     { "id": "vong-lac-tay", "name": "Vòng & lắc tay",     "image": "assets/img/cat-vong-tay.jpg", "order": 5 },
-    { "id": "khuyen-nu",    "name": "Khuyên nụ",          "image": "assets/img/cat-khuyen-nu.jpg", "order": 6 }
+    { "id": "khuyen-nu",    "name": "Khuyên nụ",          "image": "assets/products/khuyen-nu-bac-925-xi-vang-trang-1.jpg", "order": 6 }
   ],
 
   "collections": [
     {
       "id": "noi-bat",
       "name": "Gợi ý từ cửa hàng",
-      "description": "Những món khách ghé cửa hàng hỏi nhiều trong thời gian gần đây.",
-      "image": "assets/img/collection-noi-bat.jpg",
+      "description": "Những sản phẩm đang được Bạc Hải Yến giới thiệu.",
+      "image": "assets/products/khuyen-tai-bac-925-ngoc-trai-1.jpg",
       "skus": []
     }
   ],
@@ -164,8 +164,7 @@
 
       "images": [
         "assets/products/khuyen-tai-bac-925-ngoc-trai-1.jpg",
-        "assets/products/khuyen-tai-bac-925-ngoc-trai-2.jpg",
-        "assets/products/khuyen-tai-bac-925-ngoc-trai-3.jpg"
+        "assets/products/khuyen-tai-bac-925-ngoc-trai-2.jpg"
       ],
       "hoverImage": "assets/products/khuyen-tai-bac-925-ngoc-trai-2.jpg",
 
@@ -191,7 +190,7 @@
     {
       "id": "nhan",
       "title": "Bảng size nhẫn",
-      "note": "Bảng size dưới đây là chỗ trống có chủ ý. Cần điền theo thang size thực tế của cửa hàng trước khi khách đặt nhẫn. Không suy ra từ bảng quy đổi chung.",
+      "note": "Khách có thể gửi chu vi ngón tay hoặc đường kính trong của nhẫn đang đeo để cửa hàng tư vấn. Chỉ điền bảng này khi đã có thang size thực tế của mẫu nhẫn.",
       "headers": ["Cỡ", "Chu vi ngón tay (mm)", "Đường kính trong (mm)"],
       "rows": [],
       "needsStoreData": true

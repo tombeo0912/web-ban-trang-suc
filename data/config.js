@@ -13,15 +13,11 @@ window.BHY_CONFIG = {
   /* --------------------------------------------------------------------------
      1. TRẠNG THÁI PHÁT HÀNH
      --------------------------------------------------------------------------
-     'preview'  — bản xem trước. Khách xem được toàn bộ giao diện nhưng KHÔNG
-                  thể chốt đơn. Nút đặt hàng chuyển sang hướng dẫn liên hệ.
-                  Dùng đúng chế độ này cho tới khi có đủ: giá, tồn kho thật,
-                  địa chỉ cửa hàng, chính sách và phương thức nhận tiền.
-     'live'     — chỉ bật khi đã có backend lưu đơn thật (xem PROJECT_STATUS.md).
-                  Bật 'live' khi chưa có backend sẽ tạo đơn ảo, không ai nhận
-                  được — đừng bật.
+     'catalogue' — khách xem sản phẩm, lưu danh sách và liên hệ cửa hàng.
+     'preview'   — như catalogue, nhưng có thêm dải thông báo bản xem trước.
+     Website hiện không có luồng thanh toán hoặc lưu đơn trực tuyến.
      -------------------------------------------------------------------------- */
-  release: 'preview',
+  release: 'catalogue',
 
   /* --------------------------------------------------------------------------
      2. NHẬN DIỆN THƯƠNG HIỆU
@@ -30,7 +26,7 @@ window.BHY_CONFIG = {
     name: 'Bạc Hải Yến',
     // Tên viết hoa dùng cho logo/wordmark khi cần chữ thay ảnh
     nameUpper: 'BẠC HẢI YẾN',
-    domain: 'bachaiyen.vn',
+    domain: '', // điền tên miền chính thức sau khi xác nhận với chủ cửa hàng
     slogan: 'Một chút bạc, một nét riêng.',
     tagline: 'Chọn món trang sức đồng hành cùng những khoảnh khắc của bạn.',
 
@@ -73,7 +69,7 @@ window.BHY_CONFIG = {
     email: 'bachaiyenhn@gmail.com',
     // Để trống thì mục tương ứng tự ẩn trên toàn site.
     // Khi có đường dẫn thật, dán vào đây và web tự hiện.
-    zalo: 'https://zalo.me/0982338388',
+    zalo: '', // chờ xác nhận link Zalo chính thức
     facebook: '',
     instagram: '',
     shopee: '',
@@ -105,7 +101,7 @@ window.BHY_CONFIG = {
       hours: '08:00 – 20:00 hằng ngày',
       mapUrl: 'https://maps.app.goo.gl/vCycxWPsr8hCR3x79',
       note: '',
-      image: 'assets/img/branch-thai-binh.jpg'
+      image: ''
     },
     {
       id: 'hai-phong',
@@ -116,7 +112,7 @@ window.BHY_CONFIG = {
       hours: '08:00 – 20:00 hằng ngày',
       mapUrl: 'https://maps.app.goo.gl/RrZqPWzGdcQpsyiR6',
       note: '',
-      image: 'assets/img/branch-hai-phong.jpg'
+      image: ''
     }
   ],
 
@@ -193,22 +189,23 @@ window.BHY_CONFIG = {
     {
       slug: 'do-size-nhan',
       title: 'Cách đo size nhẫn tại nhà',
-      excerpt: 'Ba cách đo vòng ngón tay bằng giấy, bằng nhẫn đang đeo và đối chiếu bảng size của cửa hàng.',
-      image: 'assets/img/guide-size-nhan.jpg',
+      excerpt: 'Đo chu vi ngón tay hoặc đường kính trong của nhẫn đang đeo, rồi gửi số đo để cửa hàng tư vấn cỡ phù hợp.',
+      image: '',
       body: [
         'Chuẩn bị một mảnh giấy dài khoảng 10cm, một cây bút và một thước có vạch mm.',
         'Quấn mảnh giấy quanh ngón tay ở vị trí đeo nhẫn, vừa đủ ôm khít nhưng không siết vào da. Đánh dấu điểm giao nhau.',
         'Trải phẳng mảnh giấy, đo khoảng cách từ đầu giấy đến vạch đánh dấu. Đó là chu vi ngón tay, đơn vị mm.',
-        'Đối chiếu số đo với bảng size của cửa hàng ở trang chi tiết sản phẩm. Nếu số đo nằm giữa hai cỡ, chọn cỡ lớn hơn.',
+        'Nếu có một chiếc nhẫn đang đeo vừa, đặt nhẫn lên thước và đo khoảng cách giữa hai mép bên trong vòng nhẫn. Đó là đường kính trong; không đo cả phần kim loại.',
+        'Nhập số đo vào mẫu tư vấn trên website. Cửa hàng sẽ đối chiếu với mẫu nhẫn thực tế trước khi xác nhận cỡ phù hợp.',
         'Nên đo vào cuối ngày vì ngón tay hơi to hơn so với buổi sáng. Nếu ngón tay có khớp to, đo cả khớp và chọn cỡ vượt được khớp.',
-        'Cách đo tại nhà có sai số nhất định. Nếu bạn chưa chắc, hãy nhắn hotline để được hỗ trợ trước khi đặt hàng.'
+        'Cách đo tại nhà có sai số nhất định. Nếu bạn chưa chắc, hãy gửi email hoặc gọi hotline để được hỗ trợ.'
       ]
     },
     {
       slug: 'cham-soc-bac',
       title: 'Chăm sóc trang sức bạc',
       excerpt: 'Vì sao bạc xỉn màu, cách làm sáng tại nhà và những thói quen nên tránh để món trang sức bền đẹp.',
-      image: 'assets/img/guide-cham-soc-bac.jpg',
+      image: '',
       body: [
         'Bạc là kim loại quý có phản ứng tự nhiên với lưu huỳnh trong không khí, mồ hôi và một số loại mỹ phẩm. Hiện tượng xỉn màu là phản ứng hóa học bình thường, không phải lỗi sản phẩm.',
         'Nên tháo trang sức khi tắm, khi bơi, khi tập thể thao và khi làm việc nhà. Nước có clo và hóa chất tẩy rửa làm bạc xỉn nhanh hơn.',
@@ -222,13 +219,13 @@ window.BHY_CONFIG = {
       slug: 'chon-qua-tang',
       title: 'Chọn quà tặng trang sức',
       excerpt: 'Gợi ý chọn món phù hợp khi bạn chưa rõ người nhận thích gì: bắt đầu từ dịp tặng, mức ngân sách và thói quen đeo.',
-      image: 'assets/img/guide-chon-qua.jpg',
+      image: '',
       body: [
         'Bắt đầu từ dịp tặng. Quà sinh nhật, quà kỷ niệm và quà cảm ơn thường có mức ngân sách và ý nghĩa khác nhau, chọn đúng dịp sẽ dễ chọn đúng món.',
         'Xác định ngân sách trước rồi mới xem sản phẩm. Một khoản ngân sách rõ ràng giúp bạn không bị cuốn theo những món đắt hơn nhu cầu.',
         'Quan sát thói quen đeo của người nhận. Người thường xuyên đeo khuyên tai sẽ dùng được bông tai; người ít đeo phụ kiện thường hợp một món nhỏ như mặt dây hoặc lắc tay mảnh.',
         'Nếu chưa chắc về size nhẫn, hãy chọn dây chuyền hoặc bông tai — hai món này ít phụ thuộc kích cỡ hơn.',
-        'Ghi chú thêm một tấm thiệp nhỏ thường khiến món quà được nhớ lâu hơn. Nếu cửa hàng có dịch vụ gói quà, thông tin sẽ hiện ở bước thanh toán.'
+        'Nếu muốn kèm thiệp hoặc gói quà, hãy hỏi cửa hàng về dịch vụ hiện có khi liên hệ.'
       ]
     }
   ],
@@ -246,11 +243,11 @@ window.BHY_CONFIG = {
     },
     {
       q: 'Làm sao biết mình chọn đúng size nhẫn?',
-      a: 'Bạn đo chu vi ngón tay theo hướng dẫn trong Cẩm nang rồi đối chiếu bảng size ở trang chi tiết sản phẩm. Cách đo tại nhà có sai số, nên nếu chưa chắc bạn hãy gọi hotline để được tư vấn trước khi đặt hàng.'
+      a: 'Bạn đo chu vi ngón tay hoặc đường kính trong của nhẫn đang đeo, rồi gửi số đo qua mẫu tư vấn size. Cửa hàng sẽ đối chiếu với món nhẫn thực tế và tư vấn cỡ phù hợp.'
     },
     {
-      q: 'Tôi có thể đặt hàng mà không cần tạo tài khoản không?',
-      a: 'Được. Website không yêu cầu tạo tài khoản để mua hàng.'
+      q: 'Website có nhận thanh toán trực tuyến không?',
+      a: 'Chưa. Bạn xem sản phẩm trên website, lưu món mình thích rồi liên hệ cửa hàng qua Zalo, điện thoại hoặc các kênh chính thức để được tư vấn.'
     }
   ],
 

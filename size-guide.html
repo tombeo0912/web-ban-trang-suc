@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hướng dẫn đo size nhẫn — Bạc Hải Yến</title>
 <meta name="description" content="Cách đo size nhẫn tại nhà bằng giấy và thước, và bảng size nhẫn của Bạc Hải Yến.">
-<link rel="canonical" href="https://bachaiyen.vn/size-guide.html">
-<link rel="icon" href="assets/logo/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="assets/logo/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/logo/favicon-180.png">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/main.css">
@@ -37,22 +36,10 @@
 
     <hr class="divider">
 
-    <!-- Bảng size: chỉ hiện khi cửa hàng đã điền thang size thật.
-         Chưa có thì nói thẳng, không dùng bảng quy đổi chung. -->
-    <div id="size-table-root"></div>
+    <div id="size-consult-root" class="mb-5"></div>
 
-    <!-- Minh họa cách đo -->
-    <div class="mt-5">
-      <h2>Cách đo bằng giấy</h2>
-      <div class="mt-3" style="max-width:420px">
-        <div class="frame frame--4x5" id="size-illustration">
-          <!-- Chèn bằng JS bên dưới -->
-        </div>
-      </div>
-      <p class="text-xs text-faint mt-2">
-        Hình minh họa cách quấn giấy quanh ngón tay và đánh dấu điểm giao nhau.
-      </p>
-    </div>
+    <!-- Bảng size: chỉ hiện khi cửa hàng đã điền thang size thật. -->
+    <div id="size-table-root"></div>
 
     <div class="notice notice--warning mt-5">
       <span class="notice__icon" aria-hidden="true">
@@ -62,8 +49,7 @@
         <p><strong>Đo tại nhà luôn có sai số.</strong></p>
         <p class="text-sm">
           Nhiệt độ, thời điểm trong ngày và độ chặt khi quấn giấy đều làm kết quả lệch đi.
-          Nếu số đo nằm giữa hai cỡ, chọn cỡ lớn hơn. Nếu bạn vẫn chưa chắc, hãy gọi hotline —
-          cửa hàng sẽ tư vấn trước khi bạn đặt hàng.
+          Hãy đo lại vài lần, rồi gửi số đo qua mẫu trên hoặc gọi hotline để cửa hàng tư vấn.
         </p>
       </div>
     </div>
@@ -76,22 +62,7 @@
 <script src="data/config.js"></script>
 <script src="js/core.js"></script>
 <script src="js/pages.js"></script>
-<script>
-  // Ảnh minh họa cách đo, dùng cơ chế khung giữ chỗ chung.
-  document.addEventListener('DOMContentLoaded', function () {
-    var box = document.getElementById('size-illustration');
-    if (!box) return;
-    box.parentNode.replaceChild(
-      window.BHY.picture({
-        src: 'assets/img/size-do-nhan.jpg',
-        alt: 'Minh họa cách quấn giấy quanh ngón tay để đo size nhẫn',
-        ratio: '4x5',
-        label: 'Ảnh minh họa cách đo'
-      }),
-      box
-    );
-  });
-</script>
+<script src="js/size-consult.js"></script>
 
 </body>
 </html>

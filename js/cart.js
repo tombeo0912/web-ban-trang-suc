@@ -35,7 +35,7 @@
     if (!items.length) {
       mount.appendChild(el('div', { class: 'empty' }, [
         el('span', { html: H.ICON.cart }),
-        el('h2', { text: 'Giỏ hàng đang trống' }),
+        el('h2', { text: 'Chưa có món nào trong danh sách' }),
         el('p', { text: 'Bạn chưa chọn món nào. Ghé xem các món đang có ở cửa hàng nhé.' }),
         el('a', { class: 'btn btn--lg', href: 'catalog.html', text: 'Xem trang sức' })
       ]));
@@ -115,7 +115,7 @@
                 H.Cart.remove(it.key);
                 renderCartPage();
                 renderSummary();
-                H.toast('Đã xóa khỏi giỏ hàng.');
+                H.toast('Đã xóa khỏi danh sách.');
               }
             })
           ])
@@ -149,109 +149,67 @@
     }
 
     var sub = H.Cart.subtotal();
-    var ship = H.CFG.shipping || {};
-    var pay = H.CFG.payment || {};
-    var hasPayment = pay.cod || pay.bankTransfer || pay.onlineGateway;
-
     mount.innerHTML = '';
 
     var card = el('div', {
       style: 'border:1px solid var(--c-line);border-radius:10px;padding:24px;background:var(--c-surface)'
     }, [
-      el('h2', { style: 'font-size:1.125rem;margin-bottom:16px', text: 'Tóm tắt đơn hàng' })
+      el('h2', { style: 'font-size:1.125rem;margin-bottom:16px', text: 'Liên hệ về các món đã chọn' })
     ]);
 
-    /* Tạm tính */
     card.appendChild(el('div', { class: 'totals-row' }, [
-      el('span', { text: 'Tạm tính (' + H.Cart.count() + ' món)' }),
+      el('span', { text: 'Giá tham khảo (' + H.Cart.count() + ' món)' }),
       el('strong', { text: sub === null ? 'Liên hệ' : H.formatVnd(sub) })
     ]));
+    card.appendChild(el('p', { class: 'text-xs text-soft mb-3' }, [
+      'Giá, size nhẫn, tình trạng hàng và cách nhận sẽ được cửa hàng xác nhận khi bạn liên hệ. Website không nhận thanh toán.'
+    ]));
 
-    /* Cảnh báo khi trong giỏ có món chưa có giá */
-    if (sub === null) {
-      card.appendChild(el('div', { class: 'notice notice--warning mb-3' }, [
-        el('span', { class: 'notice__icon', html: H.ICON.alert }),
-        el('div', {}, [
-          el('p', { class: 'text-sm', text: 'Trong giỏ có món chưa niêm yết giá. Cửa hàng sẽ báo giá chính xác khi xác nhận đơn với bạn.' })
-        ])
-      ]));
-    }
+    var message = 'Chào Bạc Hải Yến, tôi muốn hỏi về các món sau:\n' + items.map(function (it, i) {
+      var opts = Object.keys(it.options || {}).map(function (k) { return k + ': ' + it.options[k]; }).join(', ');
+      return (i + 1) + '. ' + it.name + (it.sku ? ' (' + it.sku + ')' : '') + ' × ' + it.qty +
+        (opts ? ' — ' + opts : '') + '\n' +
+        new URL('product.html?slug=' + encodeURIComponent(it.slug), window.location.href).href;
+    }).join('\n') + '\nNhờ cửa hàng kiểm tra giá, tình trạng hàng và tư vấn cách nhận.';
 
-    /* Phí giao: chỉ tính khi chủ cửa hàng đã cấu hình biểu phí */
-    if (ship.zones && ship.zones.length) {
-      card.appendChild(el('div', { class: 'totals-row' }, [
-        el('span', { text: 'Phí giao hàng' }),
-        el('span', { class: 'text-soft', text: 'Tính ở bước thanh toán' })
-      ]));
-    } else {
-      card.appendChild(el('div', { class: 'totals-row', style: 'display:block' }, [
-        el('span', { class: 'text-xs text-soft', text: 'Phí giao hàng sẽ được cửa hàng xác nhận khi liên hệ. Chưa có biểu phí cố định cho khu vực của bạn.' })
-      ]));
-    }
+    card.appendChild(el('div', { class: 'field mt-3' }, [
+      el('label', { for: 'selection-message', text: 'Lời nhắn gửi cửa hàng' }),
+      el('textarea', { id: 'selection-message', class: 'textarea', readonly: true, text: message }),
+      el('span', { class: 'hint', text: 'Bạn có thể sao chép lời nhắn và dán vào kênh liên hệ mình dùng.' })
+    ]));
 
-    if (ship.freeShippingFrom) {
-      card.appendChild(el('p', { class: 'text-xs text-soft mb-3' },
-        ['Miễn phí giao hàng cho đơn từ ' + H.formatVnd(ship.freeShippingFrom) + '.']));
-    }
-
-    card.appendChild(el('hr', { class: 'divider', style: 'margin:16px 0' }));
-
-    /* Chưa bật thanh toán: nói thẳng lý do thay vì hiện nút giả */
-    if (!hasPayment) {
-      card.appendChild(el('div', { class: 'notice notice--info mb-3' }, [
-        el('span', { class: 'notice__icon', html: H.ICON.info }),
-        el('div', {}, [
-          el('p', {}, [el('strong', { text: 'Cửa hàng chưa bật đặt hàng trực tuyến.' })]),
-          el('p', {
-            class: 'text-sm',
-            text: 'Website đang trong giai đoạn chuẩn bị, chưa nhận đơn trên mạng. Bạn gọi hotline để đặt hàng — cửa hàng xác nhận tình trạng hàng, giá và cách nhận hàng cho bạn.'
-          })
-        ])
-      ]));
-
-      var phones = ((H.CFG.contacts || {}).hotlines || []).filter(Boolean);
-      if (phones.length) {
-        var row = el('div', { class: 'stack stack--2' });
-        phones.forEach(function (p) {
-          row.appendChild(el('a', {
-            class: 'btn btn--block',
-            href: 'tel:' + String(p).replace(/\s/g, ''),
-            text: 'Gọi ' + p
-          }));
-        });
-        card.appendChild(row);
-      }
-
-      var email = (H.CFG.contacts || {}).email;
-      if (email) {
-        card.appendChild(el('a', {
-          class: 'btn btn--ghost btn--block mt-2',
-          href: 'mailto:' + email,
-          text: 'Gửi email đặt hàng'
-        }));
-      }
-
-      card.appendChild(el('p', { class: 'text-xs text-faint mt-3' },
-        ['Khi bạn gọi, cửa hàng sẽ đọc lại đúng các món và số lượng bạn đã chọn, để tránh nhầm lẫn.']));
-    } else {
-      /* Đã bật thanh toán: hiện nút tới trang thanh toán */
-      card.appendChild(el('a', {
-        class: 'btn btn--lg btn--block',
-        href: 'checkout.html',
-        text: 'Tiến hành đặt hàng'
+    var links = el('div', { class: 'stack stack--2 mt-3' });
+    var c = H.CFG.contacts || {};
+    if (c.zalo) links.appendChild(el('a', { class: 'btn btn--block', href: c.zalo, target: '_blank', rel: 'noopener', text: 'Mở Zalo để gửi lời nhắn' }));
+    if (c.email) links.appendChild(el('a', {
+      class: 'btn btn--ghost btn--block',
+      href: 'mailto:' + c.email + '?subject=' + encodeURIComponent('Hỏi sản phẩm Bạc Hải Yến') + '&body=' + encodeURIComponent(message),
+      text: 'Gửi qua email'
+    }));
+    ['facebook', 'instagram', 'shopee'].forEach(function (channel) {
+      if (!c[channel]) return;
+      links.appendChild(el('a', {
+        class: 'btn btn--ghost btn--block', href: c[channel], target: '_blank', rel: 'noopener',
+        text: 'Mở ' + ({ facebook: 'Facebook', instagram: 'Instagram', shopee: 'Shopee' })[channel]
       }));
-
-      // Nói rõ các hình thức nhận tiền đang bật
-      var methods = [];
-      if (H.CFG.payment.cod) methods.push('Thanh toán khi nhận hàng');
-      if (H.CFG.payment.bankTransfer) methods.push('Chuyển khoản');
-      if (H.CFG.payment.onlineGateway) methods.push('Cổng thanh toán trực tuyến');
-
-      if (methods.length) {
-        card.appendChild(el('p', { class: 'text-xs text-soft mt-3' },
-          ['Hình thức nhận tiền: ' + methods.join(', ') + '.']));
+    });
+    links.appendChild(el('button', {
+      class: 'btn btn--ghost btn--block', type: 'button', text: 'Sao chép lời nhắn',
+      onclick: function (e) {
+        var textarea = $('#selection-message');
+        textarea.focus();
+        textarea.select();
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(message).then(function () { e.currentTarget.textContent = 'Đã sao chép'; });
+        } else if (document.execCommand('copy')) {
+          e.currentTarget.textContent = 'Đã sao chép';
+        }
       }
-    }
+    }));
+    ((c.hotlines || []).filter(Boolean)).forEach(function (p) {
+      links.appendChild(el('a', { class: 'btn btn--ghost btn--block', href: 'tel:' + String(p).replace(/\s/g, ''), text: 'Gọi ' + p }));
+    });
+    card.appendChild(links);
 
     mount.appendChild(card);
 
@@ -259,9 +217,9 @@
     mount.appendChild(el('button', {
       class: 'link-quiet mt-3',
       type: 'button',
-      text: 'Xóa toàn bộ giỏ hàng',
+      text: 'Xóa toàn bộ danh sách',
       onclick: function () {
-        if (window.confirm('Bạn xóa tất cả món trong giỏ hàng?')) {
+        if (window.confirm('Bạn xóa tất cả món trong danh sách?')) {
           H.Cart.clear();
           renderCartPage();
         }

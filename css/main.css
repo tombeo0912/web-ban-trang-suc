@@ -2109,6 +2109,26 @@ table.size-table th {
   margin-block: var(--sp-5);
 }
 
+.size-consult {
+  padding: clamp(18px, 4vw, 28px);
+  border: 1px solid var(--c-line);
+  border-radius: var(--r-md);
+  background: var(--c-surface);
+}
+
+.size-consult h2 { font-size: var(--fs-h4); margin-bottom: var(--sp-2); }
+.size-consult__form { display: grid; gap: var(--sp-3); margin-top: var(--sp-4); }
+.size-consult__measure { display: grid; grid-template-columns: minmax(0, 2fr) minmax(90px, 1fr); gap: var(--sp-3); }
+.size-consult__result { margin-top: var(--sp-4); padding-top: var(--sp-4); border-top: 1px solid var(--c-line); }
+.size-consult__result > * + * { margin-top: var(--sp-3); }
+.size-consult__estimate { font-weight: 600; }
+.size-consult__message { min-height: 160px; }
+.size-consult__actions { align-items: stretch; }
+
+@media (max-width: 440px) {
+  .size-consult__actions .btn { width: 100%; }
+}
+
 /* Thanh kéo của bộ lọc mobile */
 .drawer__grabber {
   width: 40px;

@@ -205,8 +205,8 @@
 
       var sizeBlock = el('div', { class: 'opt-block', id: 'size-block' }, [
         el('div', { class: 'opt-block__head' }, [
-          el('span', { class: 'opt-block__label', text: 'Chọn size' }),
-          el('a', { class: 'opt-block__link', href: '#size-guide', text: 'Hướng dẫn đo size' })
+          el('span', { class: 'opt-block__label', text: 'Tư vấn size' }),
+          el('a', { class: 'opt-block__link', href: 'size-guide.html', text: 'Hướng dẫn đo size' })
         ])
       ]);
 
@@ -218,10 +218,10 @@
         sizeBlock.appendChild(el('div', { class: 'notice notice--warning' }, [
           el('span', { class: 'notice__icon', html: H.ICON.alert }),
           el('div', {}, [
-            el('p', {}, [el('strong', { text: 'Cửa hàng chưa đăng danh sách size cho món này.' })]),
+            el('p', {}, [el('strong', { text: 'Bạn có thể gửi số đo để cửa hàng tư vấn.' })]),
             el('p', {
               class: 'text-sm',
-              text: 'Nhẫn cần đúng size ngón tay mới đeo vừa. Bạn gọi hotline để được tư vấn chọn size trước khi đặt hàng.'
+              text: 'Nhẫn cần đúng size ngón tay mới đeo vừa. Hãy điền số đo bên dưới hoặc gọi hotline để được tư vấn.'
             }),
             el('div', { class: 'row mt-2' }, phoneButtons())
           ])
@@ -260,6 +260,11 @@
         sizeBlock.appendChild(sizeSet);
       }
 
+      if (!sizes.length) {
+        var consultMount = el('div', { class: 'mt-3' });
+        sizeBlock.appendChild(consultMount);
+        H.mountSizeConsult(consultMount, product);
+      }
       box.appendChild(sizeBlock);
     }
   }
@@ -273,6 +278,30 @@
         text: 'Gọi ' + h
       });
     });
+  }
+
+  function contactButtons() {
+    var c = H.CFG.contacts || {};
+    var links = [];
+    var channels = [
+      ['zalo', 'Nhắn Zalo'],
+      ['facebook', 'Fanpage Facebook'],
+      ['instagram', 'Instagram']
+    ];
+    channels.forEach(function (item) {
+      if (c[item[0]]) links.push(el('a', {
+        class: 'btn btn--ghost btn--sm', href: c[item[0]], target: '_blank', rel: 'noopener', text: item[1]
+      }));
+    });
+    var shopee = product.shopeeUrl || c.shopee;
+    if (shopee) links.push(el('a', {
+      class: 'btn btn--ghost btn--sm', href: shopee, target: '_blank', rel: 'noopener', text: 'Xem trên Shopee'
+    }));
+    var phone = (c.hotlines || []).filter(Boolean)[0];
+    if (phone) links.push(el('a', {
+      class: 'btn btn--ghost btn--sm', href: 'tel:' + String(phone).replace(/\s/g, ''), text: 'Gọi ' + phone
+    }));
+    return links;
   }
 
   /* ==========================================================================
@@ -300,7 +329,7 @@
 
     if (btn) {
       if (needPrice) {
-        btn.textContent = 'Liên hệ để đặt hàng';
+        btn.textContent = 'Liên hệ hỏi giá';
         btn.setAttribute('aria-disabled', 'false');
         btn.removeAttribute('disabled');
       } else if (needSize) {
@@ -308,7 +337,7 @@
         btn.setAttribute('aria-disabled', 'true');
         btn.setAttribute('disabled', '');
       } else {
-        btn.textContent = 'Thêm vào giỏ';
+        btn.textContent = 'Thêm vào danh sách';
         btn.setAttribute('aria-disabled', 'false');
         btn.removeAttribute('disabled');
       }
@@ -324,7 +353,7 @@
         barBtn.setAttribute('aria-disabled', 'true');
         barBtn.setAttribute('disabled', '');
       } else {
-        barBtn.textContent = 'Thêm vào giỏ';
+        barBtn.textContent = 'Thêm vào danh sách';
         barBtn.removeAttribute('disabled');
         barBtn.setAttribute('aria-disabled', 'false');
       }
@@ -370,7 +399,7 @@
     // Ở chế độ xem trước, không ghi nhận đơn: chỉ giữ trong giỏ trên máy khách
     H.Cart.add(product, qty, selected);
     H.renderCart();
-    H.toast('Đã thêm vào giỏ hàng.', 'success');
+    H.toast('Đã thêm vào danh sách chọn món.', 'success');
 
     if (trigger) {
       trigger.classList.add('is-busy');
@@ -475,10 +504,10 @@
       shipNodes.push(el('div', { class: 'notice notice--info' }, [
         el('span', { class: 'notice__icon', html: H.ICON.info }),
         el('div', {}, [
-          el('p', {}, [el('strong', { text: 'Cửa hàng chưa bật đặt hàng trực tuyến.' })]),
+          el('p', {}, [el('strong', { text: 'Liên hệ cửa hàng để chọn cách nhận hàng.' })]),
           el('p', {
             class: 'text-sm',
-            text: 'Bạn vui lòng gọi hotline hoặc ghé cửa hàng để đặt món này. Chúng tôi sẽ xác nhận tình trạng hàng và hướng dẫn nhận hàng.'
+            text: 'Bạn vui lòng gọi hotline hoặc ghé cửa hàng để hỏi về món này. Cửa hàng sẽ xác nhận tình trạng hàng và tư vấn cách nhận.'
           })
         ])
       ]));
@@ -488,7 +517,7 @@
       shipNodes.push(el('p', { text: pol.shippingPolicy }));
     } else {
       shipNodes.push(el('p', {
-        text: 'Chính sách giao hàng chi tiết đang được cửa hàng xác nhận. Bạn gọi hotline để biết thời gian và phí giao cho khu vực của mình.'
+        text: 'Bạn gọi hotline để hỏi thời gian và phí giao tới khu vực của mình.'
       }));
     }
 
@@ -746,6 +775,7 @@
       el('h1', { class: 'pdp__title', text: product.name }),
       product.shortDescription ? el('p', { class: 'text-soft', text: product.shortDescription }) : null,
       priceNode,
+      product.priceIsPlaceholder ? el('p', { class: 'text-xs text-soft', text: 'Giá tham khảo. Cửa hàng sẽ xác nhận giá khi bạn liên hệ.' }) : null,
       stockNode,
       specRows.length ? el('dl', { class: 'specs' }, specRows) : null,
 
@@ -758,7 +788,7 @@
         el('div', {}, [el('p', { text: 'Bạn chưa chọn size. Nhẫn cần đúng size ngón tay mới đeo vừa.' })])
       ]),
 
-      // Số lượng và nút thêm vào giỏ
+      // Số lượng và nút lưu vào danh sách chọn món
       el('div', { class: 'buy-row' }, [
         el('div', { class: 'qty' }, [
           el('button', {
@@ -781,10 +811,12 @@
           class: 'btn btn--lg',
           type: 'button',
           id: 'add-to-cart',
-          text: 'Thêm vào giỏ',
+          text: 'Thêm vào danh sách',
           onclick: function () { addToCart(this); }
         })
       ]),
+
+      el('div', { class: 'row mt-3' }, contactButtons()),
 
       // Khối liên hệ thay thế khi chưa có giá
       el('div', { class: 'notice notice--info', id: 'contact-instead', hidden: true }, [
@@ -793,18 +825,12 @@
           el('p', {}, [el('strong', { text: 'Món này chưa niêm yết giá trên website.' })]),
           el('p', {
             class: 'text-sm',
-            text: 'Bạc thay đổi theo giá kim loại và theo từng đợt hàng, nên cửa hàng báo giá trực tiếp để chính xác. Bạn gọi hotline hoặc nhắn tin, chúng tôi sẽ báo giá và tình trạng hàng.'
+            text: 'Bạn liên hệ cửa hàng để hỏi giá và tình trạng hàng của món này.'
           }),
           el('div', { class: 'row mt-2' }, phoneButtons())
         ])
       ]),
 
-      // Liên kết sang Shopee chỉ hiện khi có link thật
-      product.shopeeUrl
-        ? el('p', { class: 'text-sm mt-2' }, [
-            el('a', { href: product.shopeeUrl, rel: 'noopener', target: '_blank', text: 'Xem món này trên Shopee →' })
-          ])
-        : null
     ]);
 
     /* ------------------------------------------------------------- LẮP RÁP */

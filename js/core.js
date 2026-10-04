@@ -677,7 +677,7 @@
               class: 'icon-btn',
               type: 'button',
               'data-open-cart': '',
-              'aria-label': 'Mở giỏ hàng',
+              'aria-label': 'Mở danh sách chọn món',
               'aria-controls': 'drawer-cart',
               html: ICON.cart
             }, [
@@ -785,13 +785,13 @@
       hidden: true,
       role: 'dialog',
       'aria-modal': 'true',
-      'aria-label': 'Giỏ hàng'
+      'aria-label': 'Danh sách chọn món'
     }, [
       el('div', { class: 'drawer__scrim', 'data-close': '' }),
       el('div', { class: 'drawer__panel' }, [
         el('div', { class: 'drawer__head' }, [
-          el('h2', { text: 'Giỏ hàng' }),
-          el('button', { class: 'drawer__close', type: 'button', 'data-close': '', 'aria-label': 'Đóng giỏ hàng', html: ICON.close })
+          el('h2', { text: 'Danh sách chọn món' }),
+          el('button', { class: 'drawer__close', type: 'button', 'data-close': '', 'aria-label': 'Đóng danh sách', html: ICON.close })
         ]),
         el('div', { class: 'drawer__body', 'data-cart-body': '' }),
         el('div', { class: 'drawer__foot', 'data-cart-foot': '', hidden: true })
@@ -857,7 +857,7 @@
     if (!items.length) {
       body.appendChild(el('div', { class: 'empty' }, [
         el('span', { html: ICON.cart }),
-        el('h3', { text: 'Giỏ hàng đang trống' }),
+        el('h3', { text: 'Chưa có món nào trong danh sách' }),
         el('p', { text: 'Bạn chưa chọn món nào. Ghé xem các món đang có ở cửa hàng nhé.' }),
         el('a', { class: 'btn', href: 'catalog.html', text: 'Xem trang sức' })
       ]));
@@ -913,7 +913,7 @@
               onclick: function () {
                 Cart.remove(it.key);
                 renderCart();
-                toast('Đã xóa khỏi giỏ hàng.');
+                toast('Đã xóa khỏi danh sách.');
               }
             })
           ])
@@ -941,9 +941,9 @@
     }
 
     foot.appendChild(el('p', { class: 'text-xs text-faint mb-3' },
-      ['Phí giao hàng được xác định ở bước thanh toán.']));
+      ['Giá hiển thị là mức tham khảo. Cửa hàng sẽ xác nhận giá và tình trạng hàng khi bạn liên hệ.']));
 
-    foot.appendChild(el('a', { class: 'btn btn--block', href: 'cart.html', text: 'Xem giỏ hàng' }));
+    foot.appendChild(el('a', { class: 'btn btn--block', href: 'cart.html', text: 'Xem danh sách và liên hệ' }));
     foot.appendChild(el('button', {
       class: 'btn btn--ghost btn--block mt-2',
       type: 'button',
